@@ -4,10 +4,24 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import prettier from 'eslint-plugin-prettier/recommended';
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist/', 'node_modules/', 'build/']),
+  {
+    files: ['**/*.{js,jsx,cjs,mjs}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+      ...pluginQuery.configs['flat/recommended'],
+      prettier,
+    ],
+    languageOptions: {
+      globals: globals.browser,
+    },
+  },
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -15,6 +29,7 @@ export default defineConfig([
       tseslint.configs.recommended,
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
+      ...pluginQuery.configs['flat/recommended'],
       prettier,
     ],
     languageOptions: {
