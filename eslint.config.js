@@ -8,7 +8,7 @@ import pluginQuery from '@tanstack/eslint-plugin-query';
 import prettier from 'eslint-plugin-prettier/recommended';
 
 export default defineConfig([
-  globalIgnores(['dist/', 'node_modules/', 'build/']),
+  globalIgnores(['dist/', 'node_modules/', 'build/', '**/routeTree.gen.ts']),
   {
     files: ['**/*.{js,jsx,cjs,mjs}'],
     extends: [
