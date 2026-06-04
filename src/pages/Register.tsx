@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Link, Stack, TextField, Typography } from '@mui/material';
-import { Link as RouterLink } from '@tanstack/react-router';
+import { Link as RouterLink, useNavigate } from '@tanstack/react-router';
 import { getFieldError } from '../shared/lib/getFieldError';
+import { getRegisteredUsers } from '../shared/lib/getRegisteredUsers';
+import { useUserContext } from '../entities/user/model/context';
 
 export const Register = () => {
+  const { setCurrentUser } = useUserContext();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -31,7 +36,21 @@ export const Register = () => {
     setErrors(fieldErrors);
 
     if (Object.values(fieldErrors).every((value) => value === '')) {
-      console.log('SUccess!');
+      const registeredUsers = getRegisteredUsers();
+
+      if (registeredUsers.some((user) => user.email === formData.email)) {
+        setErrors((prev) => ({ ...prev, ['email']: 'An account with this email already exists' }));
+        return;
+      }
+
+      const newUser = formData;
+      registeredUsers.push(newUser);
+
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+
+      setCurrentUser(newUser);
+      navigate({ to: '/admin' });
     }
   };
 
