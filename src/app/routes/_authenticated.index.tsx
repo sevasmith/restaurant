@@ -1,6 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { Admin } from '../../pages/Admin';
+import { createFileRoute, Navigate } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/_authenticated/')({
-  component: () => <Admin />,
+  component: () => <Navigate to="/admin" />,
 });
