@@ -8,9 +8,13 @@ export const Home = () => {
       spacing={10}
       sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}
     >
-      <Stack sx={{ alignItems: 'center' }}>
-        <Typography>Welcome to Restaurant</Typography>
-        <Typography>Which describes you best?</Typography>
+      <Stack spacing={4} sx={{ alignItems: 'center' }}>
+        <Typography component={'h1'} variant="h3">
+          Welcome to Restaurant
+        </Typography>
+        <Typography variant="l" sx={{ fontWeight: '500' }}>
+          Which describes you best?
+        </Typography>
       </Stack>
       <Stack direction={'row'} spacing={5} sx={{ margin: '0 auto', width: '40%' }}>
         <Box
