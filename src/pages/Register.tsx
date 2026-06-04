@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import { Button, Link, Stack, TextField, Typography } from '@mui/material';
-import { Link as RouterLink, useNavigate } from '@tanstack/react-router';
+import { Link as RouterLink, useLocation, useNavigate } from '@tanstack/react-router';
 import { getFieldError } from '../shared/lib/getFieldError';
 import { getRegisteredUsers } from '../shared/lib/getRegisteredUsers';
 import { useUserContext } from '../entities/user/model/context';
+import type { User } from '../entities/user/model/types';
 
 export const Register = () => {
   const { setCurrentUser } = useUserContext();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const role = location.state?.role || 'employee';
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -43,14 +47,19 @@ export const Register = () => {
         return;
       }
 
-      const newUser = formData;
+      const newUser: User = { ...formData, ['role']: role };
       registeredUsers.push(newUser);
 
       localStorage.setItem('currentUser', JSON.stringify(newUser));
       localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
 
       setCurrentUser(newUser);
-      navigate({ to: '/admin' });
+
+      if (role === 'admin') {
+        navigate({ to: '/admin' });
+      } else {
+        navigate({ to: '/employee' });
+      }
     }
   };
 

@@ -111,7 +111,7 @@ export const Login = () => {
       </Stack>
       <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center', justifyContent: 'center' }}>
         <Typography>Don't have an account?</Typography>
-        <Link to="/register" component={RouterLink}>
+        <Link to="/home" component={RouterLink}>
           Sign up
         </Link>
       </Stack>

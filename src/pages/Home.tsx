@@ -19,6 +19,7 @@ export const Home = () => {
       <Stack direction={'row'} spacing={5} sx={{ margin: '0 auto', width: '40%' }}>
         <Box
           to="/register"
+          state={{ role: 'employee' }}
           component={RouterLink}
           sx={{
             flex: '1 0 auto',
@@ -38,6 +39,7 @@ export const Home = () => {
         </Box>
         <Box
           to="/register"
+          state={{ role: 'admin' }}
           component={RouterLink}
           sx={{
             flex: '1 0 auto',
