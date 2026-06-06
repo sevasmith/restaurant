@@ -1,5 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { Card } from '../../shared/ui/Card';
+import { EmployeesTable } from '../../widgets/EmployeesTable/EmployeesTable';
 
 const EMPLOYEES_DATA = [
   { id: 1, label: 'All employees', number: 55 },
@@ -18,6 +19,7 @@ export const Employees = () => {
           <Card label={item.label} number={item.number} />
         ))}
       </Stack>
+      <EmployeesTable></EmployeesTable>
     </Stack>
   );
 };
