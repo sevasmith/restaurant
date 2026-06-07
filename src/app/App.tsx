@@ -5,8 +5,11 @@ import { theme } from './theme';
 import { useState } from 'react';
 import type { User } from '../entities/user/model/types';
 import { UserContext } from '../entities/user/model/context';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createRouter({ routeTree });
+
+const queryClient = new QueryClient();
 
 declare module '@tanstack/react-router' {
   interface Register {
@@ -31,7 +34,9 @@ export const App = () => {
   return (
     <UserContext value={{ currentUser, setCurrentUser }}>
       <ThemeProvider theme={theme}>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
       </ThemeProvider>
     </UserContext>
   );

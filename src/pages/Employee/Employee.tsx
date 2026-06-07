@@ -1,13 +1,13 @@
 import { Button, Stack } from '@mui/material';
 import { useNavigate } from '@tanstack/react-router';
-import { useUserContext } from '../entities/user/model/context';
+import { useUserContext } from '../../entities/user/model/context';
 
-export const Admin = () => {
-  const { currentUser, setCurrentUser } = useUserContext();
+export const Employee = () => {
   const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useUserContext();
 
-  if (currentUser?.role !== 'admin') {
-    navigate({ to: '/employee' });
+  if (currentUser?.role !== 'employee') {
+    navigate({ to: '/admin' });
   }
 
   const handleLogOut = () => {
@@ -18,7 +18,7 @@ export const Admin = () => {
 
   return (
     <Stack>
-      <Button onClick={handleLogOut}>Log out for Admin</Button>
+      <Button onClick={handleLogOut}>Log out for Employee</Button>
     </Stack>
   );
 };

@@ -8,81 +8,186 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './app/routes/__root';
-import { Route as RegisterRouteImport } from './app/routes/register';
-import { Route as LoginRouteImport } from './app/routes/login';
-import { Route as HomeRouteImport } from './app/routes/home';
-import { Route as AuthenticatedRouteImport } from './app/routes/_authenticated';
-import { Route as AuthenticatedIndexRouteImport } from './app/routes/_authenticated.index';
-import { Route as AuthenticatedEmployeeRouteImport } from './app/routes/_authenticated.employee';
-import { Route as AuthenticatedAdminRouteImport } from './app/routes/_authenticated.admin';
+import { Route as rootRouteImport } from './app/routes/__root'
+import { Route as RegisterRouteImport } from './app/routes/register'
+import { Route as LoginRouteImport } from './app/routes/login'
+import { Route as HomeRouteImport } from './app/routes/home'
+import { Route as AuthenticatedRouteImport } from './app/routes/_authenticated'
+import { Route as AuthenticatedIndexRouteImport } from './app/routes/_authenticated/index'
+import { Route as AuthenticatedEmployeeRouteImport } from './app/routes/_authenticated/employee'
+import { Route as AuthenticatedAdminRouteImport } from './app/routes/_authenticated/admin'
+import { Route as AuthenticatedAdminVacationRouteImport } from './app/routes/_authenticated/admin/vacation'
+import { Route as AuthenticatedAdminTasksRouteImport } from './app/routes/_authenticated/admin/tasks'
+import { Route as AuthenticatedAdminSickdaysRouteImport } from './app/routes/_authenticated/admin/sickdays'
+import { Route as AuthenticatedAdminShiftRouteImport } from './app/routes/_authenticated/admin/shift'
+import { Route as AuthenticatedAdminPayrollRouteImport } from './app/routes/_authenticated/admin/payroll'
+import { Route as AuthenticatedAdminHomeRouteImport } from './app/routes/_authenticated/admin/home'
+import { Route as AuthenticatedAdminEmployeesRouteImport } from './app/routes/_authenticated/admin/employees'
+import { Route as AuthenticatedAdminAnalyticsRouteImport } from './app/routes/_authenticated/admin/analytics'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const HomeRoute = HomeRouteImport.update({
   id: '/home',
   path: '/home',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const AuthenticatedRoute = AuthenticatedRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AuthenticatedRoute,
-} as any);
+} as any)
 const AuthenticatedEmployeeRoute = AuthenticatedEmployeeRouteImport.update({
   id: '/employee',
   path: '/employee',
   getParentRoute: () => AuthenticatedRoute,
-} as any);
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => AuthenticatedRoute,
-} as any);
+} as any)
+const AuthenticatedAdminVacationRoute =
+  AuthenticatedAdminVacationRouteImport.update({
+    id: '/vacation',
+    path: '/vacation',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminTasksRoute = AuthenticatedAdminTasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminSickdaysRoute =
+  AuthenticatedAdminSickdaysRouteImport.update({
+    id: '/sickdays',
+    path: '/sickdays',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminShiftRoute = AuthenticatedAdminShiftRouteImport.update({
+  id: '/shift',
+  path: '/shift',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminPayrollRoute =
+  AuthenticatedAdminPayrollRouteImport.update({
+    id: '/payroll',
+    path: '/payroll',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminHomeRoute = AuthenticatedAdminHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminEmployeesRoute =
+  AuthenticatedAdminEmployeesRouteImport.update({
+    id: '/employees',
+    path: '/employees',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAnalyticsRoute =
+  AuthenticatedAdminAnalyticsRouteImport.update({
+    id: '/analytics',
+    path: '/analytics',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof AuthenticatedIndexRoute;
-  '/home': typeof HomeRoute;
-  '/login': typeof LoginRoute;
-  '/register': typeof RegisterRoute;
-  '/admin': typeof AuthenticatedAdminRoute;
-  '/employee': typeof AuthenticatedEmployeeRoute;
+  '/': typeof AuthenticatedIndexRoute
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/employee': typeof AuthenticatedEmployeeRoute
+  '/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
+  '/admin/employees': typeof AuthenticatedAdminEmployeesRoute
+  '/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/admin/payroll': typeof AuthenticatedAdminPayrollRoute
+  '/admin/shift': typeof AuthenticatedAdminShiftRoute
+  '/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
+  '/admin/tasks': typeof AuthenticatedAdminTasksRoute
+  '/admin/vacation': typeof AuthenticatedAdminVacationRoute
 }
 export interface FileRoutesByTo {
-  '/home': typeof HomeRoute;
-  '/login': typeof LoginRoute;
-  '/register': typeof RegisterRoute;
-  '/admin': typeof AuthenticatedAdminRoute;
-  '/employee': typeof AuthenticatedEmployeeRoute;
-  '/': typeof AuthenticatedIndexRoute;
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/employee': typeof AuthenticatedEmployeeRoute
+  '/': typeof AuthenticatedIndexRoute
+  '/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
+  '/admin/employees': typeof AuthenticatedAdminEmployeesRoute
+  '/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/admin/payroll': typeof AuthenticatedAdminPayrollRoute
+  '/admin/shift': typeof AuthenticatedAdminShiftRoute
+  '/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
+  '/admin/tasks': typeof AuthenticatedAdminTasksRoute
+  '/admin/vacation': typeof AuthenticatedAdminVacationRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  '/_authenticated': typeof AuthenticatedRouteWithChildren;
-  '/home': typeof HomeRoute;
-  '/login': typeof LoginRoute;
-  '/register': typeof RegisterRoute;
-  '/_authenticated/admin': typeof AuthenticatedAdminRoute;
-  '/_authenticated/employee': typeof AuthenticatedEmployeeRoute;
-  '/_authenticated/': typeof AuthenticatedIndexRoute;
+  __root__: typeof rootRouteImport
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/home': typeof HomeRoute
+  '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
+  '/_authenticated/employee': typeof AuthenticatedEmployeeRoute
+  '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
+  '/_authenticated/admin/employees': typeof AuthenticatedAdminEmployeesRoute
+  '/_authenticated/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/_authenticated/admin/payroll': typeof AuthenticatedAdminPayrollRoute
+  '/_authenticated/admin/shift': typeof AuthenticatedAdminShiftRoute
+  '/_authenticated/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
+  '/_authenticated/admin/tasks': typeof AuthenticatedAdminTasksRoute
+  '/_authenticated/admin/vacation': typeof AuthenticatedAdminVacationRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: '/' | '/home' | '/login' | '/register' | '/admin' | '/employee';
-  fileRoutesByTo: FileRoutesByTo;
-  to: '/home' | '/login' | '/register' | '/admin' | '/employee' | '/';
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/home'
+    | '/login'
+    | '/register'
+    | '/admin'
+    | '/employee'
+    | '/admin/analytics'
+    | '/admin/employees'
+    | '/admin/home'
+    | '/admin/payroll'
+    | '/admin/shift'
+    | '/admin/sickdays'
+    | '/admin/tasks'
+    | '/admin/vacation'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/home'
+    | '/login'
+    | '/register'
+    | '/admin'
+    | '/employee'
+    | '/'
+    | '/admin/analytics'
+    | '/admin/employees'
+    | '/admin/home'
+    | '/admin/payroll'
+    | '/admin/shift'
+    | '/admin/sickdays'
+    | '/admin/tasks'
+    | '/admin/vacation'
   id:
     | '__root__'
     | '/_authenticated'
@@ -91,92 +196,181 @@ export interface FileRouteTypes {
     | '/register'
     | '/_authenticated/admin'
     | '/_authenticated/employee'
-    | '/_authenticated/';
-  fileRoutesById: FileRoutesById;
+    | '/_authenticated/'
+    | '/_authenticated/admin/analytics'
+    | '/_authenticated/admin/employees'
+    | '/_authenticated/admin/home'
+    | '/_authenticated/admin/payroll'
+    | '/_authenticated/admin/shift'
+    | '/_authenticated/admin/sickdays'
+    | '/_authenticated/admin/tasks'
+    | '/_authenticated/admin/vacation'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren;
-  HomeRoute: typeof HomeRoute;
-  LoginRoute: typeof LoginRoute;
-  RegisterRoute: typeof RegisterRoute;
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  HomeRoute: typeof HomeRoute
+  LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/register': {
-      id: '/register';
-      path: '/register';
-      fullPath: '/register';
-      preLoaderRoute: typeof RegisterRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
-      id: '/login';
-      path: '/login';
-      fullPath: '/login';
-      preLoaderRoute: typeof LoginRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/home': {
-      id: '/home';
-      path: '/home';
-      fullPath: '/home';
-      preLoaderRoute: typeof HomeRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated': {
-      id: '/_authenticated';
-      path: '';
-      fullPath: '/';
-      preLoaderRoute: typeof AuthenticatedRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/': {
-      id: '/_authenticated/';
-      path: '/';
-      fullPath: '/';
-      preLoaderRoute: typeof AuthenticatedIndexRouteImport;
-      parentRoute: typeof AuthenticatedRoute;
-    };
+      id: '/_authenticated/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/employee': {
-      id: '/_authenticated/employee';
-      path: '/employee';
-      fullPath: '/employee';
-      preLoaderRoute: typeof AuthenticatedEmployeeRouteImport;
-      parentRoute: typeof AuthenticatedRoute;
-    };
+      id: '/_authenticated/employee'
+      path: '/employee'
+      fullPath: '/employee'
+      preLoaderRoute: typeof AuthenticatedEmployeeRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/admin': {
-      id: '/_authenticated/admin';
-      path: '/admin';
-      fullPath: '/admin';
-      preLoaderRoute: typeof AuthenticatedAdminRouteImport;
-      parentRoute: typeof AuthenticatedRoute;
-    };
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/admin/vacation': {
+      id: '/_authenticated/admin/vacation'
+      path: '/vacation'
+      fullPath: '/admin/vacation'
+      preLoaderRoute: typeof AuthenticatedAdminVacationRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/tasks': {
+      id: '/_authenticated/admin/tasks'
+      path: '/tasks'
+      fullPath: '/admin/tasks'
+      preLoaderRoute: typeof AuthenticatedAdminTasksRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/sickdays': {
+      id: '/_authenticated/admin/sickdays'
+      path: '/sickdays'
+      fullPath: '/admin/sickdays'
+      preLoaderRoute: typeof AuthenticatedAdminSickdaysRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/shift': {
+      id: '/_authenticated/admin/shift'
+      path: '/shift'
+      fullPath: '/admin/shift'
+      preLoaderRoute: typeof AuthenticatedAdminShiftRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/payroll': {
+      id: '/_authenticated/admin/payroll'
+      path: '/payroll'
+      fullPath: '/admin/payroll'
+      preLoaderRoute: typeof AuthenticatedAdminPayrollRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/home': {
+      id: '/_authenticated/admin/home'
+      path: '/home'
+      fullPath: '/admin/home'
+      preLoaderRoute: typeof AuthenticatedAdminHomeRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/employees': {
+      id: '/_authenticated/admin/employees'
+      path: '/employees'
+      fullPath: '/admin/employees'
+      preLoaderRoute: typeof AuthenticatedAdminEmployeesRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/analytics': {
+      id: '/_authenticated/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AuthenticatedAdminAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminAnalyticsRoute: typeof AuthenticatedAdminAnalyticsRoute
+  AuthenticatedAdminEmployeesRoute: typeof AuthenticatedAdminEmployeesRoute
+  AuthenticatedAdminHomeRoute: typeof AuthenticatedAdminHomeRoute
+  AuthenticatedAdminPayrollRoute: typeof AuthenticatedAdminPayrollRoute
+  AuthenticatedAdminShiftRoute: typeof AuthenticatedAdminShiftRoute
+  AuthenticatedAdminSickdaysRoute: typeof AuthenticatedAdminSickdaysRoute
+  AuthenticatedAdminTasksRoute: typeof AuthenticatedAdminTasksRoute
+  AuthenticatedAdminVacationRoute: typeof AuthenticatedAdminVacationRoute
+}
+
+const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminAnalyticsRoute: AuthenticatedAdminAnalyticsRoute,
+  AuthenticatedAdminEmployeesRoute: AuthenticatedAdminEmployeesRoute,
+  AuthenticatedAdminHomeRoute: AuthenticatedAdminHomeRoute,
+  AuthenticatedAdminPayrollRoute: AuthenticatedAdminPayrollRoute,
+  AuthenticatedAdminShiftRoute: AuthenticatedAdminShiftRoute,
+  AuthenticatedAdminSickdaysRoute: AuthenticatedAdminSickdaysRoute,
+  AuthenticatedAdminTasksRoute: AuthenticatedAdminTasksRoute,
+  AuthenticatedAdminVacationRoute: AuthenticatedAdminVacationRoute,
+}
+
+const AuthenticatedAdminRouteWithChildren =
+  AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
+
 interface AuthenticatedRouteChildren {
-  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute;
-  AuthenticatedEmployeeRoute: typeof AuthenticatedEmployeeRoute;
-  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute;
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
+  AuthenticatedEmployeeRoute: typeof AuthenticatedEmployeeRoute
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
-  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+  AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
   AuthenticatedEmployeeRoute: AuthenticatedEmployeeRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
-};
+}
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
   AuthenticatedRouteChildren,
-);
+)
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
