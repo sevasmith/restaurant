@@ -19,7 +19,7 @@ export const AdminDashboard = () => {
   };
 
   return (
-    <Stack direction={'row'} sx={{ flex: 1 }}>
+    <Stack direction={'row'} sx={{ flex: 1, overflow: 'hidden' }}>
       <AdminSidebar />
       <Stack sx={{ flexGrow: 1, padding: 3 }}>
         <Header></Header>

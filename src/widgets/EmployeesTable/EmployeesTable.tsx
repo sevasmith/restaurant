@@ -3,6 +3,7 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   useReactTable,
   type ColumnFiltersState,
 } from '@tanstack/react-table';
@@ -21,6 +22,7 @@ import {
   TableCell,
   TableContainer,
   TableHead,
+  TablePagination,
   TableRow,
   TextField,
   Typography,
@@ -145,9 +147,15 @@ export const EmployeesTable = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     state: {
       globalFilter,
       columnFilters,
+    },
+    initialState: {
+      pagination: {
+        pageSize: 5,
+      },
     },
     onGlobalFilterChange: setGlobalFilter,
     onColumnFiltersChange: setColumnFilters,
@@ -174,7 +182,7 @@ export const EmployeesTable = () => {
             </Stack>
           )}
           sx={{
-            backgroundColor: 'grey.100',
+            backgroundColor: 'grey.400',
             borderRadius: 1,
             color: 'primary.dark',
             height: 36,
@@ -182,7 +190,7 @@ export const EmployeesTable = () => {
             '& .MuiSelect-select': {
               paddingLeft: 1,
             },
-            '& fieldset': { borderColor: 'grey.100' },
+            '& fieldset': { border: 'none' },
           }}
         >
           <MenuItem value="">All Shifts</MenuItem>
@@ -193,12 +201,12 @@ export const EmployeesTable = () => {
         <Stack
           direction={'row'}
           sx={{
+            height: 36,
             alignItems: 'center',
             backgroundColor: 'common.white',
             borderRadius: 1,
             border: '1px solid',
-            borderColor: 'grey.300',
-            '&:hover': { borderColor: 'primary.dark' },
+            borderColor: 'grey.400',
           }}
         >
           <TextField
@@ -209,7 +217,11 @@ export const EmployeesTable = () => {
               backgroundColor: 'transparent',
               height: 36,
               border: 'none',
-              '& fieldset': { border: 'none', borderRadius: 0, height: 40 },
+              '& fieldset': {
+                border: 'none',
+                borderRadius: 0,
+                height: 36,
+              },
             }}
           />
           <SvgIcon
@@ -271,6 +283,18 @@ export const EmployeesTable = () => {
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={table.getFilteredRowModel().rows.length}
+        page={table.getState().pagination.pageIndex}
+        onPageChange={(_, page) => table.setPageIndex(page)}
+        rowsPerPage={table.getState().pagination.pageSize}
+        onRowsPerPageChange={(e) => {
+          table.setPageSize(Number(e.target.value));
+          table.setPageIndex(0);
+        }}
+      />
     </Stack>
   );
 };

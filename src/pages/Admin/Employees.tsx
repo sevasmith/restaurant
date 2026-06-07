@@ -10,7 +10,7 @@ const EMPLOYEES_DATA = [
 
 export const Employees = () => {
   return (
-    <Stack spacing={1} sx={{ flexGrow: 1 }}>
+    <Stack spacing={1} sx={{ flexGrow: 1, overflowY: 'auto' }}>
       <Typography variant="h5" component={'h2'} sx={{ fontWeight: 500, padding: 1 }}>
         Employees
       </Typography>

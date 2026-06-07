@@ -57,6 +57,7 @@ export const theme = createTheme({
       100: '#F0F0F0',
       200: '#7D7D7D',
       300: '#cecece',
+      400: '#EEEEEE',
     },
     warning: {
       main: '#FFB648',
