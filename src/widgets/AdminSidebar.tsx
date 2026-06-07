@@ -2,16 +2,23 @@ import { alpha, Button, Container, Stack, SvgIcon } from '@mui/material';
 import { Link as RouterLink, useLocation } from '@tanstack/react-router';
 import RestaurantIcon from '../assets/icons/restaurant-crm.svg?react';
 import HomeIcon from '../assets/icons/home.svg?react';
+import ShiftIcon from '../assets/icons/shift.svg?react';
+import PayrollIcon from '../assets/icons/payroll.svg?react';
+import TasksIcon from '../assets/icons/tasks.svg?react';
+import AnalyticsIcon from '../assets/icons/analytics.svg?react';
+import EmployeesIcon from '../assets/icons/employees.svg?react';
+import VacationIcon from '../assets/icons/vacation.svg?react';
+import SickDaysIcon from '../assets/icons/sick-days.svg?react';
 
 const SIDEBAR_ITEMS = [
   { id: 1, label: 'Home', icon: HomeIcon, link: '/admin/home' },
-  { id: 2, label: 'Shift', icon: HomeIcon, link: '/admin/shift' },
-  { id: 3, label: 'Payroll', icon: HomeIcon, link: '/admin/payroll' },
-  { id: 4, label: 'Tasks', icon: HomeIcon, link: '/admin/tasks' },
-  { id: 5, label: 'Analytics', icon: HomeIcon, link: '/admin/analytics' },
-  { id: 6, label: 'Employees', icon: HomeIcon, link: '/admin/employees' },
-  { id: 7, label: 'Vacation', icon: HomeIcon, link: '/admin/vacation' },
-  { id: 8, label: 'Sick days', icon: HomeIcon, link: '/admin/sickdays' },
+  { id: 2, label: 'Shift', icon: ShiftIcon, link: '/admin/shift' },
+  { id: 3, label: 'Payroll', icon: PayrollIcon, link: '/admin/payroll' },
+  { id: 4, label: 'Tasks', icon: TasksIcon, link: '/admin/tasks' },
+  { id: 5, label: 'Analytics', icon: AnalyticsIcon, link: '/admin/analytics' },
+  { id: 6, label: 'Employees', icon: EmployeesIcon, link: '/admin/employees' },
+  { id: 7, label: 'Vacation', icon: VacationIcon, link: '/admin/vacation' },
+  { id: 8, label: 'Sick days', icon: SickDaysIcon, link: '/admin/sickdays' },
 ];
 
 export const AdminSidebar = () => {

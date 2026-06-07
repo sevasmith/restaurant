@@ -7,3 +7,12 @@ export interface Employee {
   employmentDate: string;
   billingDate: string;
 }
+
+export interface RawEmployee {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  image: string;
+  birthDate: string;
+}

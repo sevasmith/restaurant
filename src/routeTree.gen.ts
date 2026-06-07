@@ -16,7 +16,14 @@ import { Route as AuthenticatedRouteImport } from './app/routes/_authenticated'
 import { Route as AuthenticatedIndexRouteImport } from './app/routes/_authenticated/index'
 import { Route as AuthenticatedEmployeeRouteImport } from './app/routes/_authenticated/employee'
 import { Route as AuthenticatedAdminRouteImport } from './app/routes/_authenticated/admin'
+import { Route as AuthenticatedAdminVacationRouteImport } from './app/routes/_authenticated/admin/vacation'
+import { Route as AuthenticatedAdminTasksRouteImport } from './app/routes/_authenticated/admin/tasks'
+import { Route as AuthenticatedAdminSickdaysRouteImport } from './app/routes/_authenticated/admin/sickdays'
+import { Route as AuthenticatedAdminShiftRouteImport } from './app/routes/_authenticated/admin/shift'
+import { Route as AuthenticatedAdminPayrollRouteImport } from './app/routes/_authenticated/admin/payroll'
+import { Route as AuthenticatedAdminHomeRouteImport } from './app/routes/_authenticated/admin/home'
 import { Route as AuthenticatedAdminEmployeesRouteImport } from './app/routes/_authenticated/admin/employees'
+import { Route as AuthenticatedAdminAnalyticsRouteImport } from './app/routes/_authenticated/admin/analytics'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -52,10 +59,49 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedAdminVacationRoute =
+  AuthenticatedAdminVacationRouteImport.update({
+    id: '/vacation',
+    path: '/vacation',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminTasksRoute = AuthenticatedAdminTasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminSickdaysRoute =
+  AuthenticatedAdminSickdaysRouteImport.update({
+    id: '/sickdays',
+    path: '/sickdays',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminShiftRoute = AuthenticatedAdminShiftRouteImport.update({
+  id: '/shift',
+  path: '/shift',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedAdminPayrollRoute =
+  AuthenticatedAdminPayrollRouteImport.update({
+    id: '/payroll',
+    path: '/payroll',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminHomeRoute = AuthenticatedAdminHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 const AuthenticatedAdminEmployeesRoute =
   AuthenticatedAdminEmployeesRouteImport.update({
     id: '/employees',
     path: '/employees',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAnalyticsRoute =
+  AuthenticatedAdminAnalyticsRouteImport.update({
+    id: '/analytics',
+    path: '/analytics',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
 
@@ -66,7 +112,14 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/employee': typeof AuthenticatedEmployeeRoute
+  '/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
   '/admin/employees': typeof AuthenticatedAdminEmployeesRoute
+  '/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/admin/payroll': typeof AuthenticatedAdminPayrollRoute
+  '/admin/shift': typeof AuthenticatedAdminShiftRoute
+  '/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
+  '/admin/tasks': typeof AuthenticatedAdminTasksRoute
+  '/admin/vacation': typeof AuthenticatedAdminVacationRoute
 }
 export interface FileRoutesByTo {
   '/home': typeof HomeRoute
@@ -75,7 +128,14 @@ export interface FileRoutesByTo {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/employee': typeof AuthenticatedEmployeeRoute
   '/': typeof AuthenticatedIndexRoute
+  '/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
   '/admin/employees': typeof AuthenticatedAdminEmployeesRoute
+  '/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/admin/payroll': typeof AuthenticatedAdminPayrollRoute
+  '/admin/shift': typeof AuthenticatedAdminShiftRoute
+  '/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
+  '/admin/tasks': typeof AuthenticatedAdminTasksRoute
+  '/admin/vacation': typeof AuthenticatedAdminVacationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -86,7 +146,14 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/_authenticated/employee': typeof AuthenticatedEmployeeRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
   '/_authenticated/admin/employees': typeof AuthenticatedAdminEmployeesRoute
+  '/_authenticated/admin/home': typeof AuthenticatedAdminHomeRoute
+  '/_authenticated/admin/payroll': typeof AuthenticatedAdminPayrollRoute
+  '/_authenticated/admin/shift': typeof AuthenticatedAdminShiftRoute
+  '/_authenticated/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
+  '/_authenticated/admin/tasks': typeof AuthenticatedAdminTasksRoute
+  '/_authenticated/admin/vacation': typeof AuthenticatedAdminVacationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -97,7 +164,14 @@ export interface FileRouteTypes {
     | '/register'
     | '/admin'
     | '/employee'
+    | '/admin/analytics'
     | '/admin/employees'
+    | '/admin/home'
+    | '/admin/payroll'
+    | '/admin/shift'
+    | '/admin/sickdays'
+    | '/admin/tasks'
+    | '/admin/vacation'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/home'
@@ -106,7 +180,14 @@ export interface FileRouteTypes {
     | '/admin'
     | '/employee'
     | '/'
+    | '/admin/analytics'
     | '/admin/employees'
+    | '/admin/home'
+    | '/admin/payroll'
+    | '/admin/shift'
+    | '/admin/sickdays'
+    | '/admin/tasks'
+    | '/admin/vacation'
   id:
     | '__root__'
     | '/_authenticated'
@@ -116,7 +197,14 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/_authenticated/employee'
     | '/_authenticated/'
+    | '/_authenticated/admin/analytics'
     | '/_authenticated/admin/employees'
+    | '/_authenticated/admin/home'
+    | '/_authenticated/admin/payroll'
+    | '/_authenticated/admin/shift'
+    | '/_authenticated/admin/sickdays'
+    | '/_authenticated/admin/tasks'
+    | '/_authenticated/admin/vacation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -177,6 +265,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/admin/vacation': {
+      id: '/_authenticated/admin/vacation'
+      path: '/vacation'
+      fullPath: '/admin/vacation'
+      preLoaderRoute: typeof AuthenticatedAdminVacationRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/tasks': {
+      id: '/_authenticated/admin/tasks'
+      path: '/tasks'
+      fullPath: '/admin/tasks'
+      preLoaderRoute: typeof AuthenticatedAdminTasksRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/sickdays': {
+      id: '/_authenticated/admin/sickdays'
+      path: '/sickdays'
+      fullPath: '/admin/sickdays'
+      preLoaderRoute: typeof AuthenticatedAdminSickdaysRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/shift': {
+      id: '/_authenticated/admin/shift'
+      path: '/shift'
+      fullPath: '/admin/shift'
+      preLoaderRoute: typeof AuthenticatedAdminShiftRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/payroll': {
+      id: '/_authenticated/admin/payroll'
+      path: '/payroll'
+      fullPath: '/admin/payroll'
+      preLoaderRoute: typeof AuthenticatedAdminPayrollRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/home': {
+      id: '/_authenticated/admin/home'
+      path: '/home'
+      fullPath: '/admin/home'
+      preLoaderRoute: typeof AuthenticatedAdminHomeRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/employees': {
       id: '/_authenticated/admin/employees'
       path: '/employees'
@@ -184,15 +314,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminEmployeesRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/analytics': {
+      id: '/_authenticated/admin/analytics'
+      path: '/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AuthenticatedAdminAnalyticsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
 interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminAnalyticsRoute: typeof AuthenticatedAdminAnalyticsRoute
   AuthenticatedAdminEmployeesRoute: typeof AuthenticatedAdminEmployeesRoute
+  AuthenticatedAdminHomeRoute: typeof AuthenticatedAdminHomeRoute
+  AuthenticatedAdminPayrollRoute: typeof AuthenticatedAdminPayrollRoute
+  AuthenticatedAdminShiftRoute: typeof AuthenticatedAdminShiftRoute
+  AuthenticatedAdminSickdaysRoute: typeof AuthenticatedAdminSickdaysRoute
+  AuthenticatedAdminTasksRoute: typeof AuthenticatedAdminTasksRoute
+  AuthenticatedAdminVacationRoute: typeof AuthenticatedAdminVacationRoute
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminAnalyticsRoute: AuthenticatedAdminAnalyticsRoute,
   AuthenticatedAdminEmployeesRoute: AuthenticatedAdminEmployeesRoute,
+  AuthenticatedAdminHomeRoute: AuthenticatedAdminHomeRoute,
+  AuthenticatedAdminPayrollRoute: AuthenticatedAdminPayrollRoute,
+  AuthenticatedAdminShiftRoute: AuthenticatedAdminShiftRoute,
+  AuthenticatedAdminSickdaysRoute: AuthenticatedAdminSickdaysRoute,
+  AuthenticatedAdminTasksRoute: AuthenticatedAdminTasksRoute,
+  AuthenticatedAdminVacationRoute: AuthenticatedAdminVacationRoute,
 }
 
 const AuthenticatedAdminRouteWithChildren =

@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { Card } from '../../shared/ui/Card';
-import { EmployeesTableWidget } from '../../widgets/EmployeesTable/EmployeesTable';
+import { EmployeesTableWidget } from '../../widgets/EmployeesTableWidget';
 
 const EMPLOYEES_DATA = [
   { id: 1, label: 'All employees', number: 55 },
@@ -10,7 +10,16 @@ const EMPLOYEES_DATA = [
 
 export const Employees = () => {
   return (
-    <Stack spacing={1} sx={{ flexGrow: 1, overflowY: 'auto' }}>
+    <Stack
+      spacing={1}
+      sx={{
+        flexGrow: 1,
+        overflowY: 'auto',
+        '&::-webkit-scrollbar': {
+          display: 'none',
+        },
+      }}
+    >
       <Typography variant="h5" component={'h2'} sx={{ fontWeight: 500, padding: 1 }}>
         Employees
       </Typography>

@@ -5,13 +5,14 @@ import {
   useReactTable,
   type ColumnFiltersState,
 } from '@tanstack/react-table';
-import { Box, Stack } from '@mui/material';
-import { mockEmployees } from '../../entities/employee/mock/mock-employees';
+import { Box, CircularProgress, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
-import { EmployeeSearch } from '../../features/employee-search/ui/EmployeeSearch';
-import { EmployeeFilter } from '../../features/employee-filter/ui/EmployeeFilter';
-import { columns } from '../../entities/employee/lib/employee-columns';
-import { EmployeeTable } from '../../entities/employee/ui/EmployeeTable';
+import { EmployeeSearch } from '../features/employee-search/ui/EmployeeSearch';
+import { EmployeeFilter } from '../features/employee-filter/ui/EmployeeFilter';
+import { columns } from '../entities/employee/lib/employee-columns';
+import { EmployeeTable } from '../entities/employee/ui/EmployeeTable';
+import { useQuery } from '@tanstack/react-query';
+import { getEmployees } from '../entities/employee/api/get-employees';
 
 export interface GlobalFilterType {
   globalFilter: string;
@@ -22,9 +23,18 @@ export const EmployeesTableWidget = () => {
   const [globalFilter, setGlobalFilter] = useState('');
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
+  const {
+    isLoading,
+    isError,
+    data: employees = [],
+  } = useQuery({
+    queryKey: ['employee'],
+    queryFn: getEmployees,
+  });
+
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
-    data: mockEmployees,
+    data: employees,
     columns: columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -42,12 +52,25 @@ export const EmployeesTableWidget = () => {
     onColumnFiltersChange: setColumnFilters,
   });
 
+  if (isLoading) {
+    return (
+      <Stack sx={{ alignItems: 'center', justifyContent: 'center', p: 4, height: 400 }}>
+        <CircularProgress color="primary" />
+      </Stack>
+    );
+  }
+
+  if (isError) {
+    return <Typography color="error">Failed to load employees data.</Typography>;
+  }
+
   return (
     <Stack sx={{ backgroundColor: 'primary.light', padding: 2, borderRadius: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <EmployeeFilter table={table} />
         <EmployeeSearch globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
       </Box>
+
       <EmployeeTable table={table} />
     </Stack>
   );
