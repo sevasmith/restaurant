@@ -1,7 +1,7 @@
 import { Box, Stack, Link, Typography } from '@mui/material';
 import { Link as RouterLink } from '@tanstack/react-router';
 
-export const Home = () => {
+export const Start = () => {
   return (
     <Stack
       component="main"

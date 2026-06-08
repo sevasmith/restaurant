@@ -9,13 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './app/routes/__root'
+import { Route as StartRouteImport } from './app/routes/start'
 import { Route as RegisterRouteImport } from './app/routes/register'
 import { Route as LoginRouteImport } from './app/routes/login'
-import { Route as HomeRouteImport } from './app/routes/home'
 import { Route as AuthenticatedRouteImport } from './app/routes/_authenticated'
 import { Route as AuthenticatedIndexRouteImport } from './app/routes/_authenticated/index'
 import { Route as AuthenticatedEmployeeRouteImport } from './app/routes/_authenticated/employee'
 import { Route as AuthenticatedAdminRouteImport } from './app/routes/_authenticated/admin'
+import { Route as AuthenticatedEmployeeIndexRouteImport } from './app/routes/_authenticated/employee/index'
+import { Route as AuthenticatedAdminIndexRouteImport } from './app/routes/_authenticated/admin/index'
+import { Route as AuthenticatedEmployeeTablesRouteImport } from './app/routes/_authenticated/employee/tables'
+import { Route as AuthenticatedEmployeeStatisticsRouteImport } from './app/routes/_authenticated/employee/statistics'
+import { Route as AuthenticatedEmployeeOrdersRouteImport } from './app/routes/_authenticated/employee/orders'
 import { Route as AuthenticatedAdminVacationRouteImport } from './app/routes/_authenticated/admin/vacation'
 import { Route as AuthenticatedAdminTasksRouteImport } from './app/routes/_authenticated/admin/tasks'
 import { Route as AuthenticatedAdminSickdaysRouteImport } from './app/routes/_authenticated/admin/sickdays'
@@ -25,6 +30,11 @@ import { Route as AuthenticatedAdminHomeRouteImport } from './app/routes/_authen
 import { Route as AuthenticatedAdminEmployeesRouteImport } from './app/routes/_authenticated/admin/employees'
 import { Route as AuthenticatedAdminAnalyticsRouteImport } from './app/routes/_authenticated/admin/analytics'
 
+const StartRoute = StartRouteImport.update({
+  id: '/start',
+  path: '/start',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -33,11 +43,6 @@ const RegisterRoute = RegisterRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HomeRoute = HomeRouteImport.update({
-  id: '/home',
-  path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedRoute = AuthenticatedRouteImport.update({
@@ -59,6 +64,35 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedEmployeeIndexRoute =
+  AuthenticatedEmployeeIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedEmployeeRoute,
+  } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const AuthenticatedEmployeeTablesRoute =
+  AuthenticatedEmployeeTablesRouteImport.update({
+    id: '/tables',
+    path: '/tables',
+    getParentRoute: () => AuthenticatedEmployeeRoute,
+  } as any)
+const AuthenticatedEmployeeStatisticsRoute =
+  AuthenticatedEmployeeStatisticsRouteImport.update({
+    id: '/statistics',
+    path: '/statistics',
+    getParentRoute: () => AuthenticatedEmployeeRoute,
+  } as any)
+const AuthenticatedEmployeeOrdersRoute =
+  AuthenticatedEmployeeOrdersRouteImport.update({
+    id: '/orders',
+    path: '/orders',
+    getParentRoute: () => AuthenticatedEmployeeRoute,
+  } as any)
 const AuthenticatedAdminVacationRoute =
   AuthenticatedAdminVacationRouteImport.update({
     id: '/vacation',
@@ -107,11 +141,11 @@ const AuthenticatedAdminAnalyticsRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
-  '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/start': typeof StartRoute
   '/admin': typeof AuthenticatedAdminRouteWithChildren
-  '/employee': typeof AuthenticatedEmployeeRoute
+  '/employee': typeof AuthenticatedEmployeeRouteWithChildren
   '/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
   '/admin/employees': typeof AuthenticatedAdminEmployeesRoute
   '/admin/home': typeof AuthenticatedAdminHomeRoute
@@ -120,13 +154,16 @@ export interface FileRoutesByFullPath {
   '/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
   '/admin/tasks': typeof AuthenticatedAdminTasksRoute
   '/admin/vacation': typeof AuthenticatedAdminVacationRoute
+  '/employee/orders': typeof AuthenticatedEmployeeOrdersRoute
+  '/employee/statistics': typeof AuthenticatedEmployeeStatisticsRoute
+  '/employee/tables': typeof AuthenticatedEmployeeTablesRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/employee/': typeof AuthenticatedEmployeeIndexRoute
 }
 export interface FileRoutesByTo {
-  '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
-  '/admin': typeof AuthenticatedAdminRouteWithChildren
-  '/employee': typeof AuthenticatedEmployeeRoute
+  '/start': typeof StartRoute
   '/': typeof AuthenticatedIndexRoute
   '/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
   '/admin/employees': typeof AuthenticatedAdminEmployeesRoute
@@ -136,15 +173,20 @@ export interface FileRoutesByTo {
   '/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
   '/admin/tasks': typeof AuthenticatedAdminTasksRoute
   '/admin/vacation': typeof AuthenticatedAdminVacationRoute
+  '/employee/orders': typeof AuthenticatedEmployeeOrdersRoute
+  '/employee/statistics': typeof AuthenticatedEmployeeStatisticsRoute
+  '/employee/tables': typeof AuthenticatedEmployeeTablesRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/employee': typeof AuthenticatedEmployeeIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteWithChildren
-  '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
+  '/start': typeof StartRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
-  '/_authenticated/employee': typeof AuthenticatedEmployeeRoute
+  '/_authenticated/employee': typeof AuthenticatedEmployeeRouteWithChildren
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/admin/analytics': typeof AuthenticatedAdminAnalyticsRoute
   '/_authenticated/admin/employees': typeof AuthenticatedAdminEmployeesRoute
@@ -154,14 +196,19 @@ export interface FileRoutesById {
   '/_authenticated/admin/sickdays': typeof AuthenticatedAdminSickdaysRoute
   '/_authenticated/admin/tasks': typeof AuthenticatedAdminTasksRoute
   '/_authenticated/admin/vacation': typeof AuthenticatedAdminVacationRoute
+  '/_authenticated/employee/orders': typeof AuthenticatedEmployeeOrdersRoute
+  '/_authenticated/employee/statistics': typeof AuthenticatedEmployeeStatisticsRoute
+  '/_authenticated/employee/tables': typeof AuthenticatedEmployeeTablesRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/employee/': typeof AuthenticatedEmployeeIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/home'
     | '/login'
     | '/register'
+    | '/start'
     | '/admin'
     | '/employee'
     | '/admin/analytics'
@@ -172,13 +219,16 @@ export interface FileRouteTypes {
     | '/admin/sickdays'
     | '/admin/tasks'
     | '/admin/vacation'
+    | '/employee/orders'
+    | '/employee/statistics'
+    | '/employee/tables'
+    | '/admin/'
+    | '/employee/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/home'
     | '/login'
     | '/register'
-    | '/admin'
-    | '/employee'
+    | '/start'
     | '/'
     | '/admin/analytics'
     | '/admin/employees'
@@ -188,12 +238,17 @@ export interface FileRouteTypes {
     | '/admin/sickdays'
     | '/admin/tasks'
     | '/admin/vacation'
+    | '/employee/orders'
+    | '/employee/statistics'
+    | '/employee/tables'
+    | '/admin'
+    | '/employee'
   id:
     | '__root__'
     | '/_authenticated'
-    | '/home'
     | '/login'
     | '/register'
+    | '/start'
     | '/_authenticated/admin'
     | '/_authenticated/employee'
     | '/_authenticated/'
@@ -205,17 +260,29 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/sickdays'
     | '/_authenticated/admin/tasks'
     | '/_authenticated/admin/vacation'
+    | '/_authenticated/employee/orders'
+    | '/_authenticated/employee/statistics'
+    | '/_authenticated/employee/tables'
+    | '/_authenticated/admin/'
+    | '/_authenticated/employee/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
-  HomeRoute: typeof HomeRoute
   LoginRoute: typeof LoginRoute
   RegisterRoute: typeof RegisterRoute
+  StartRoute: typeof StartRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/start': {
+      id: '/start'
+      path: '/start'
+      fullPath: '/start'
+      preLoaderRoute: typeof StartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
@@ -228,13 +295,6 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home': {
-      id: '/home'
-      path: '/home'
-      fullPath: '/home'
-      preLoaderRoute: typeof HomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -264,6 +324,41 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin'
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/employee/': {
+      id: '/_authenticated/employee/'
+      path: '/'
+      fullPath: '/employee/'
+      preLoaderRoute: typeof AuthenticatedEmployeeIndexRouteImport
+      parentRoute: typeof AuthenticatedEmployeeRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/employee/tables': {
+      id: '/_authenticated/employee/tables'
+      path: '/tables'
+      fullPath: '/employee/tables'
+      preLoaderRoute: typeof AuthenticatedEmployeeTablesRouteImport
+      parentRoute: typeof AuthenticatedEmployeeRoute
+    }
+    '/_authenticated/employee/statistics': {
+      id: '/_authenticated/employee/statistics'
+      path: '/statistics'
+      fullPath: '/employee/statistics'
+      preLoaderRoute: typeof AuthenticatedEmployeeStatisticsRouteImport
+      parentRoute: typeof AuthenticatedEmployeeRoute
+    }
+    '/_authenticated/employee/orders': {
+      id: '/_authenticated/employee/orders'
+      path: '/orders'
+      fullPath: '/employee/orders'
+      preLoaderRoute: typeof AuthenticatedEmployeeOrdersRouteImport
+      parentRoute: typeof AuthenticatedEmployeeRoute
     }
     '/_authenticated/admin/vacation': {
       id: '/_authenticated/admin/vacation'
@@ -333,6 +428,7 @@ interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminSickdaysRoute: typeof AuthenticatedAdminSickdaysRoute
   AuthenticatedAdminTasksRoute: typeof AuthenticatedAdminTasksRoute
   AuthenticatedAdminVacationRoute: typeof AuthenticatedAdminVacationRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
@@ -344,20 +440,40 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminSickdaysRoute: AuthenticatedAdminSickdaysRoute,
   AuthenticatedAdminTasksRoute: AuthenticatedAdminTasksRoute,
   AuthenticatedAdminVacationRoute: AuthenticatedAdminVacationRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 
 const AuthenticatedAdminRouteWithChildren =
   AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
 
+interface AuthenticatedEmployeeRouteChildren {
+  AuthenticatedEmployeeOrdersRoute: typeof AuthenticatedEmployeeOrdersRoute
+  AuthenticatedEmployeeStatisticsRoute: typeof AuthenticatedEmployeeStatisticsRoute
+  AuthenticatedEmployeeTablesRoute: typeof AuthenticatedEmployeeTablesRoute
+  AuthenticatedEmployeeIndexRoute: typeof AuthenticatedEmployeeIndexRoute
+}
+
+const AuthenticatedEmployeeRouteChildren: AuthenticatedEmployeeRouteChildren = {
+  AuthenticatedEmployeeOrdersRoute: AuthenticatedEmployeeOrdersRoute,
+  AuthenticatedEmployeeStatisticsRoute: AuthenticatedEmployeeStatisticsRoute,
+  AuthenticatedEmployeeTablesRoute: AuthenticatedEmployeeTablesRoute,
+  AuthenticatedEmployeeIndexRoute: AuthenticatedEmployeeIndexRoute,
+}
+
+const AuthenticatedEmployeeRouteWithChildren =
+  AuthenticatedEmployeeRoute._addFileChildren(
+    AuthenticatedEmployeeRouteChildren,
+  )
+
 interface AuthenticatedRouteChildren {
   AuthenticatedAdminRoute: typeof AuthenticatedAdminRouteWithChildren
-  AuthenticatedEmployeeRoute: typeof AuthenticatedEmployeeRoute
+  AuthenticatedEmployeeRoute: typeof AuthenticatedEmployeeRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAdminRoute: AuthenticatedAdminRouteWithChildren,
-  AuthenticatedEmployeeRoute: AuthenticatedEmployeeRoute,
+  AuthenticatedEmployeeRoute: AuthenticatedEmployeeRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
 }
 
@@ -367,9 +483,9 @@ const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
-  HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
   RegisterRoute: RegisterRoute,
+  StartRoute: StartRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

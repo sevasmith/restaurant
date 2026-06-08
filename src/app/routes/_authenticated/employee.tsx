@@ -1,6 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { Employee } from '../../../pages/Employee/Employee';
+import { EmployeeDashboard } from '../../../pages/Employee/EmployeeDashboard';
+import { ProtectedEmployeeRoute } from '../../../shared/ui/ProtectedEmployeeRoute';
 
 export const Route = createFileRoute('/_authenticated/employee')({
-  component: Employee,
+  component: () => (
+    <ProtectedEmployeeRoute>
+      <EmployeeDashboard />
+    </ProtectedEmployeeRoute>
+  ),
 });
