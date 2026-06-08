@@ -1,6 +1,14 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-export const Card = ({ label, number }: { label: string; number: number }) => {
+export const Card = ({
+  label,
+  number,
+  buttonText,
+}: {
+  label: string;
+  number: number;
+  buttonText: string;
+}) => {
   return (
     <Stack
       spacing={2}
@@ -22,7 +30,7 @@ export const Card = ({ label, number }: { label: string; number: number }) => {
             fontWeight: 300,
           }}
         >
-          View
+          {buttonText}
         </Button>
       </Stack>
     </Stack>

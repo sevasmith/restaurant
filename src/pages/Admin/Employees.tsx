@@ -25,7 +25,7 @@ export const Employees = () => {
       </Typography>
       <Stack direction={'row'} spacing={1} sx={{ width: '100%' }}>
         {EMPLOYEES_DATA.map((item) => (
-          <Card label={item.label} number={item.number} />
+          <Card label={item.label} number={item.number} buttonText="View" />
         ))}
       </Stack>
       <EmployeesTableWidget></EmployeesTableWidget>
