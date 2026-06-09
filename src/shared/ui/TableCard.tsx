@@ -1,4 +1,5 @@
 import { Box, Stack, SvgIcon, Typography } from '@mui/material';
+import { Link as RouterLink } from '@tanstack/react-router';
 import ArrowIcon from '../../assets/icons/arrow.svg?react';
 import type { TableCardType } from '../types/types';
 
@@ -11,7 +12,17 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
         padding: card.padding,
       }}
     >
-      <Box sx={{ position: 'relative', display: 'flex', flexGrow: 1 }}>
+      <Box
+        component={RouterLink}
+        to={card.link}
+        sx={{
+          position: 'relative',
+          display: 'flex',
+          flexGrow: 1,
+          textDecoration: 'none',
+          color: 'common.black',
+        }}
+      >
         <Stack
           direction={'column'}
           sx={{
@@ -22,6 +33,10 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
             borderColor: 'grey.200',
             borderRadius: '8px',
             justifyContent: 'space-between',
+            backgroundClip: 'padding-box',
+            overFlow: 'hidden',
+            transition: 'all 0.1s ease',
+            '&:hover': { boxShadow: (theme) => `inset 0 0 0 1px ${theme.palette.grey[200]}` },
           }}
         >
           <Stack

@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { Card } from '../../shared/ui/Card';
-import { EmployeesTableWidget } from '../../widgets/EmployeesTableWidget';
+import { EmployeesWidget } from '../../widgets/EmployeesWidget';
 
 const EMPLOYEES_DATA = [
   { id: 1, label: 'All employees', number: 55 },
@@ -15,6 +15,8 @@ export const Employees = () => {
       sx={{
         flexGrow: 1,
         overflowY: 'auto',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
         '&::-webkit-scrollbar': {
           display: 'none',
         },
@@ -28,7 +30,7 @@ export const Employees = () => {
           <Card label={item.label} number={item.number} buttonText="View" />
         ))}
       </Stack>
-      <EmployeesTableWidget></EmployeesTableWidget>
+      <EmployeesWidget></EmployeesWidget>
     </Stack>
   );
 };

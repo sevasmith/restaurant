@@ -27,7 +27,7 @@ export const AdminSidebar = () => {
   return (
     <Stack
       component={'aside'}
-      sx={{ width: 'fit-content', height: '100%', padding: 3, backgroundColor: 'primary.light' }}
+      sx={{ minWidth: 260, height: '100%', padding: 3, backgroundColor: 'primary.light' }}
     >
       <Container
         sx={{

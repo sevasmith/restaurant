@@ -7,7 +7,7 @@ export const EmployeeDashboard = () => {
   return (
     <Stack direction={'row'} sx={{ flex: 1, overflow: 'hidden' }}>
       <EmpolyeeSidebar />
-      <Stack sx={{ flexGrow: 1, padding: 3 }}>
+      <Stack spacing={1} sx={{ flex: '1 1 auto', padding: 3 }}>
         <Header></Header>
         <Outlet />
       </Stack>

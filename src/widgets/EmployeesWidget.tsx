@@ -19,7 +19,7 @@ export interface GlobalFilterType {
   setGlobalFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const EmployeesTableWidget = () => {
+export const EmployeesWidget = () => {
   const [globalFilter, setGlobalFilter] = useState('');
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 

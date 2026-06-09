@@ -17,7 +17,12 @@ export const EmpolyeeSidebar = () => {
   return (
     <Stack
       component={'aside'}
-      sx={{ width: 'fit-content', height: '100%', padding: 3, backgroundColor: 'primary.dark' }}
+      sx={{
+        minWidth: 260,
+        height: '100%',
+        padding: 3,
+        backgroundColor: 'primary.dark',
+      }}
     >
       <Container
         sx={{

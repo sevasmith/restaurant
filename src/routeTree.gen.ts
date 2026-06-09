@@ -19,6 +19,7 @@ import { Route as AuthenticatedAdminRouteImport } from './app/routes/_authentica
 import { Route as AuthenticatedEmployeeIndexRouteImport } from './app/routes/_authenticated/employee/index'
 import { Route as AuthenticatedAdminIndexRouteImport } from './app/routes/_authenticated/admin/index'
 import { Route as AuthenticatedEmployeeTablesRouteImport } from './app/routes/_authenticated/employee/tables'
+import { Route as AuthenticatedEmployeeTableRouteImport } from './app/routes/_authenticated/employee/table'
 import { Route as AuthenticatedEmployeeStatisticsRouteImport } from './app/routes/_authenticated/employee/statistics'
 import { Route as AuthenticatedEmployeeOrdersRouteImport } from './app/routes/_authenticated/employee/orders'
 import { Route as AuthenticatedAdminVacationRouteImport } from './app/routes/_authenticated/admin/vacation'
@@ -29,6 +30,15 @@ import { Route as AuthenticatedAdminPayrollRouteImport } from './app/routes/_aut
 import { Route as AuthenticatedAdminHomeRouteImport } from './app/routes/_authenticated/admin/home'
 import { Route as AuthenticatedAdminEmployeesRouteImport } from './app/routes/_authenticated/admin/employees'
 import { Route as AuthenticatedAdminAnalyticsRouteImport } from './app/routes/_authenticated/admin/analytics'
+import { Route as AuthenticatedEmployeeTableIndexRouteImport } from './app/routes/_authenticated/employee/table/index'
+import { Route as AuthenticatedEmployeeTableA2RouteImport } from './app/routes/_authenticated/employee/table/A2'
+import { Route as AuthenticatedEmployeeTable7RouteImport } from './app/routes/_authenticated/employee/table/7'
+import { Route as AuthenticatedEmployeeTable6RouteImport } from './app/routes/_authenticated/employee/table/6'
+import { Route as AuthenticatedEmployeeTable5RouteImport } from './app/routes/_authenticated/employee/table/5'
+import { Route as AuthenticatedEmployeeTable4RouteImport } from './app/routes/_authenticated/employee/table/4'
+import { Route as AuthenticatedEmployeeTable3RouteImport } from './app/routes/_authenticated/employee/table/3'
+import { Route as AuthenticatedEmployeeTable2RouteImport } from './app/routes/_authenticated/employee/table/2'
+import { Route as AuthenticatedEmployeeTable1RouteImport } from './app/routes/_authenticated/employee/table/1'
 
 const StartRoute = StartRouteImport.update({
   id: '/start',
@@ -79,6 +89,12 @@ const AuthenticatedEmployeeTablesRoute =
   AuthenticatedEmployeeTablesRouteImport.update({
     id: '/tables',
     path: '/tables',
+    getParentRoute: () => AuthenticatedEmployeeRoute,
+  } as any)
+const AuthenticatedEmployeeTableRoute =
+  AuthenticatedEmployeeTableRouteImport.update({
+    id: '/table',
+    path: '/table',
     getParentRoute: () => AuthenticatedEmployeeRoute,
   } as any)
 const AuthenticatedEmployeeStatisticsRoute =
@@ -138,6 +154,60 @@ const AuthenticatedAdminAnalyticsRoute =
     path: '/analytics',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedEmployeeTableIndexRoute =
+  AuthenticatedEmployeeTableIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
+const AuthenticatedEmployeeTableA2Route =
+  AuthenticatedEmployeeTableA2RouteImport.update({
+    id: '/A2',
+    path: '/A2',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
+const AuthenticatedEmployeeTable7Route =
+  AuthenticatedEmployeeTable7RouteImport.update({
+    id: '/7',
+    path: '/7',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
+const AuthenticatedEmployeeTable6Route =
+  AuthenticatedEmployeeTable6RouteImport.update({
+    id: '/6',
+    path: '/6',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
+const AuthenticatedEmployeeTable5Route =
+  AuthenticatedEmployeeTable5RouteImport.update({
+    id: '/5',
+    path: '/5',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
+const AuthenticatedEmployeeTable4Route =
+  AuthenticatedEmployeeTable4RouteImport.update({
+    id: '/4',
+    path: '/4',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
+const AuthenticatedEmployeeTable3Route =
+  AuthenticatedEmployeeTable3RouteImport.update({
+    id: '/3',
+    path: '/3',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
+const AuthenticatedEmployeeTable2Route =
+  AuthenticatedEmployeeTable2RouteImport.update({
+    id: '/2',
+    path: '/2',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
+const AuthenticatedEmployeeTable1Route =
+  AuthenticatedEmployeeTable1RouteImport.update({
+    id: '/1',
+    path: '/1',
+    getParentRoute: () => AuthenticatedEmployeeTableRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
@@ -156,9 +226,19 @@ export interface FileRoutesByFullPath {
   '/admin/vacation': typeof AuthenticatedAdminVacationRoute
   '/employee/orders': typeof AuthenticatedEmployeeOrdersRoute
   '/employee/statistics': typeof AuthenticatedEmployeeStatisticsRoute
+  '/employee/table': typeof AuthenticatedEmployeeTableRouteWithChildren
   '/employee/tables': typeof AuthenticatedEmployeeTablesRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/employee/': typeof AuthenticatedEmployeeIndexRoute
+  '/employee/table/1': typeof AuthenticatedEmployeeTable1Route
+  '/employee/table/2': typeof AuthenticatedEmployeeTable2Route
+  '/employee/table/3': typeof AuthenticatedEmployeeTable3Route
+  '/employee/table/4': typeof AuthenticatedEmployeeTable4Route
+  '/employee/table/5': typeof AuthenticatedEmployeeTable5Route
+  '/employee/table/6': typeof AuthenticatedEmployeeTable6Route
+  '/employee/table/7': typeof AuthenticatedEmployeeTable7Route
+  '/employee/table/A2': typeof AuthenticatedEmployeeTableA2Route
+  '/employee/table/': typeof AuthenticatedEmployeeTableIndexRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
@@ -178,6 +258,15 @@ export interface FileRoutesByTo {
   '/employee/tables': typeof AuthenticatedEmployeeTablesRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/employee': typeof AuthenticatedEmployeeIndexRoute
+  '/employee/table/1': typeof AuthenticatedEmployeeTable1Route
+  '/employee/table/2': typeof AuthenticatedEmployeeTable2Route
+  '/employee/table/3': typeof AuthenticatedEmployeeTable3Route
+  '/employee/table/4': typeof AuthenticatedEmployeeTable4Route
+  '/employee/table/5': typeof AuthenticatedEmployeeTable5Route
+  '/employee/table/6': typeof AuthenticatedEmployeeTable6Route
+  '/employee/table/7': typeof AuthenticatedEmployeeTable7Route
+  '/employee/table/A2': typeof AuthenticatedEmployeeTableA2Route
+  '/employee/table': typeof AuthenticatedEmployeeTableIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -198,9 +287,19 @@ export interface FileRoutesById {
   '/_authenticated/admin/vacation': typeof AuthenticatedAdminVacationRoute
   '/_authenticated/employee/orders': typeof AuthenticatedEmployeeOrdersRoute
   '/_authenticated/employee/statistics': typeof AuthenticatedEmployeeStatisticsRoute
+  '/_authenticated/employee/table': typeof AuthenticatedEmployeeTableRouteWithChildren
   '/_authenticated/employee/tables': typeof AuthenticatedEmployeeTablesRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/employee/': typeof AuthenticatedEmployeeIndexRoute
+  '/_authenticated/employee/table/1': typeof AuthenticatedEmployeeTable1Route
+  '/_authenticated/employee/table/2': typeof AuthenticatedEmployeeTable2Route
+  '/_authenticated/employee/table/3': typeof AuthenticatedEmployeeTable3Route
+  '/_authenticated/employee/table/4': typeof AuthenticatedEmployeeTable4Route
+  '/_authenticated/employee/table/5': typeof AuthenticatedEmployeeTable5Route
+  '/_authenticated/employee/table/6': typeof AuthenticatedEmployeeTable6Route
+  '/_authenticated/employee/table/7': typeof AuthenticatedEmployeeTable7Route
+  '/_authenticated/employee/table/A2': typeof AuthenticatedEmployeeTableA2Route
+  '/_authenticated/employee/table/': typeof AuthenticatedEmployeeTableIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -221,9 +320,19 @@ export interface FileRouteTypes {
     | '/admin/vacation'
     | '/employee/orders'
     | '/employee/statistics'
+    | '/employee/table'
     | '/employee/tables'
     | '/admin/'
     | '/employee/'
+    | '/employee/table/1'
+    | '/employee/table/2'
+    | '/employee/table/3'
+    | '/employee/table/4'
+    | '/employee/table/5'
+    | '/employee/table/6'
+    | '/employee/table/7'
+    | '/employee/table/A2'
+    | '/employee/table/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/login'
@@ -243,6 +352,15 @@ export interface FileRouteTypes {
     | '/employee/tables'
     | '/admin'
     | '/employee'
+    | '/employee/table/1'
+    | '/employee/table/2'
+    | '/employee/table/3'
+    | '/employee/table/4'
+    | '/employee/table/5'
+    | '/employee/table/6'
+    | '/employee/table/7'
+    | '/employee/table/A2'
+    | '/employee/table'
   id:
     | '__root__'
     | '/_authenticated'
@@ -262,9 +380,19 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/vacation'
     | '/_authenticated/employee/orders'
     | '/_authenticated/employee/statistics'
+    | '/_authenticated/employee/table'
     | '/_authenticated/employee/tables'
     | '/_authenticated/admin/'
     | '/_authenticated/employee/'
+    | '/_authenticated/employee/table/1'
+    | '/_authenticated/employee/table/2'
+    | '/_authenticated/employee/table/3'
+    | '/_authenticated/employee/table/4'
+    | '/_authenticated/employee/table/5'
+    | '/_authenticated/employee/table/6'
+    | '/_authenticated/employee/table/7'
+    | '/_authenticated/employee/table/A2'
+    | '/_authenticated/employee/table/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -346,6 +474,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedEmployeeTablesRouteImport
       parentRoute: typeof AuthenticatedEmployeeRoute
     }
+    '/_authenticated/employee/table': {
+      id: '/_authenticated/employee/table'
+      path: '/table'
+      fullPath: '/employee/table'
+      preLoaderRoute: typeof AuthenticatedEmployeeTableRouteImport
+      parentRoute: typeof AuthenticatedEmployeeRoute
+    }
     '/_authenticated/employee/statistics': {
       id: '/_authenticated/employee/statistics'
       path: '/statistics'
@@ -416,6 +551,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminAnalyticsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/employee/table/': {
+      id: '/_authenticated/employee/table/'
+      path: '/'
+      fullPath: '/employee/table/'
+      preLoaderRoute: typeof AuthenticatedEmployeeTableIndexRouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
+    '/_authenticated/employee/table/A2': {
+      id: '/_authenticated/employee/table/A2'
+      path: '/A2'
+      fullPath: '/employee/table/A2'
+      preLoaderRoute: typeof AuthenticatedEmployeeTableA2RouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
+    '/_authenticated/employee/table/7': {
+      id: '/_authenticated/employee/table/7'
+      path: '/7'
+      fullPath: '/employee/table/7'
+      preLoaderRoute: typeof AuthenticatedEmployeeTable7RouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
+    '/_authenticated/employee/table/6': {
+      id: '/_authenticated/employee/table/6'
+      path: '/6'
+      fullPath: '/employee/table/6'
+      preLoaderRoute: typeof AuthenticatedEmployeeTable6RouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
+    '/_authenticated/employee/table/5': {
+      id: '/_authenticated/employee/table/5'
+      path: '/5'
+      fullPath: '/employee/table/5'
+      preLoaderRoute: typeof AuthenticatedEmployeeTable5RouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
+    '/_authenticated/employee/table/4': {
+      id: '/_authenticated/employee/table/4'
+      path: '/4'
+      fullPath: '/employee/table/4'
+      preLoaderRoute: typeof AuthenticatedEmployeeTable4RouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
+    '/_authenticated/employee/table/3': {
+      id: '/_authenticated/employee/table/3'
+      path: '/3'
+      fullPath: '/employee/table/3'
+      preLoaderRoute: typeof AuthenticatedEmployeeTable3RouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
+    '/_authenticated/employee/table/2': {
+      id: '/_authenticated/employee/table/2'
+      path: '/2'
+      fullPath: '/employee/table/2'
+      preLoaderRoute: typeof AuthenticatedEmployeeTable2RouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
+    '/_authenticated/employee/table/1': {
+      id: '/_authenticated/employee/table/1'
+      path: '/1'
+      fullPath: '/employee/table/1'
+      preLoaderRoute: typeof AuthenticatedEmployeeTable1RouteImport
+      parentRoute: typeof AuthenticatedEmployeeTableRoute
+    }
   }
 }
 
@@ -446,9 +644,40 @@ const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
 const AuthenticatedAdminRouteWithChildren =
   AuthenticatedAdminRoute._addFileChildren(AuthenticatedAdminRouteChildren)
 
+interface AuthenticatedEmployeeTableRouteChildren {
+  AuthenticatedEmployeeTable1Route: typeof AuthenticatedEmployeeTable1Route
+  AuthenticatedEmployeeTable2Route: typeof AuthenticatedEmployeeTable2Route
+  AuthenticatedEmployeeTable3Route: typeof AuthenticatedEmployeeTable3Route
+  AuthenticatedEmployeeTable4Route: typeof AuthenticatedEmployeeTable4Route
+  AuthenticatedEmployeeTable5Route: typeof AuthenticatedEmployeeTable5Route
+  AuthenticatedEmployeeTable6Route: typeof AuthenticatedEmployeeTable6Route
+  AuthenticatedEmployeeTable7Route: typeof AuthenticatedEmployeeTable7Route
+  AuthenticatedEmployeeTableA2Route: typeof AuthenticatedEmployeeTableA2Route
+  AuthenticatedEmployeeTableIndexRoute: typeof AuthenticatedEmployeeTableIndexRoute
+}
+
+const AuthenticatedEmployeeTableRouteChildren: AuthenticatedEmployeeTableRouteChildren =
+  {
+    AuthenticatedEmployeeTable1Route: AuthenticatedEmployeeTable1Route,
+    AuthenticatedEmployeeTable2Route: AuthenticatedEmployeeTable2Route,
+    AuthenticatedEmployeeTable3Route: AuthenticatedEmployeeTable3Route,
+    AuthenticatedEmployeeTable4Route: AuthenticatedEmployeeTable4Route,
+    AuthenticatedEmployeeTable5Route: AuthenticatedEmployeeTable5Route,
+    AuthenticatedEmployeeTable6Route: AuthenticatedEmployeeTable6Route,
+    AuthenticatedEmployeeTable7Route: AuthenticatedEmployeeTable7Route,
+    AuthenticatedEmployeeTableA2Route: AuthenticatedEmployeeTableA2Route,
+    AuthenticatedEmployeeTableIndexRoute: AuthenticatedEmployeeTableIndexRoute,
+  }
+
+const AuthenticatedEmployeeTableRouteWithChildren =
+  AuthenticatedEmployeeTableRoute._addFileChildren(
+    AuthenticatedEmployeeTableRouteChildren,
+  )
+
 interface AuthenticatedEmployeeRouteChildren {
   AuthenticatedEmployeeOrdersRoute: typeof AuthenticatedEmployeeOrdersRoute
   AuthenticatedEmployeeStatisticsRoute: typeof AuthenticatedEmployeeStatisticsRoute
+  AuthenticatedEmployeeTableRoute: typeof AuthenticatedEmployeeTableRouteWithChildren
   AuthenticatedEmployeeTablesRoute: typeof AuthenticatedEmployeeTablesRoute
   AuthenticatedEmployeeIndexRoute: typeof AuthenticatedEmployeeIndexRoute
 }
@@ -456,6 +685,7 @@ interface AuthenticatedEmployeeRouteChildren {
 const AuthenticatedEmployeeRouteChildren: AuthenticatedEmployeeRouteChildren = {
   AuthenticatedEmployeeOrdersRoute: AuthenticatedEmployeeOrdersRoute,
   AuthenticatedEmployeeStatisticsRoute: AuthenticatedEmployeeStatisticsRoute,
+  AuthenticatedEmployeeTableRoute: AuthenticatedEmployeeTableRouteWithChildren,
   AuthenticatedEmployeeTablesRoute: AuthenticatedEmployeeTablesRoute,
   AuthenticatedEmployeeIndexRoute: AuthenticatedEmployeeIndexRoute,
 }
