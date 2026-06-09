@@ -1,36 +1,34 @@
 import { Stack, Typography } from '@mui/material';
 import { Card } from '../../shared/ui/Card';
-import { EmployeesWidget } from '../../widgets/EmployeesWidget';
+import { TablesWidget } from '../../widgets/TablesWidget';
 
-const EMPLOYEES_DATA = [
-  { id: 1, label: 'All employees', number: 55 },
-  { id: 2, label: 'On shift', number: 31 },
-  { id: 3, label: 'Idle', number: 24 },
+const TABLES_DATA = [
+  { id: 1, label: 'Free', number: 13 },
+  { id: 2, label: 'Occupied', number: 4 },
+  { id: 3, label: 'Reserved', number: 4 },
 ];
 
-export const Employees = () => {
+export const Tables = () => {
   return (
     <Stack
       spacing={1}
       sx={{
         flexGrow: 1,
         overflowY: 'auto',
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none',
         '&::-webkit-scrollbar': {
           display: 'none',
         },
       }}
     >
       <Typography variant="h5" component={'h2'} sx={{ fontWeight: 500, padding: 1 }}>
-        Employees
+        Tables
       </Typography>
       <Stack direction={'row'} spacing={1} sx={{ width: '100%' }}>
-        {EMPLOYEES_DATA.map((item) => (
-          <Card label={item.label} number={item.number} buttonText="View" />
+        {TABLES_DATA.map((item) => (
+          <Card label={item.label} number={item.number} buttonText="Show" />
         ))}
       </Stack>
-      <EmployeesWidget></EmployeesWidget>
+      <TablesWidget />
     </Stack>
   );
 };

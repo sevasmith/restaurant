@@ -16,6 +16,18 @@ declare module '@mui/material/styles' {
     s?: React.CSSProperties;
     xs?: React.CSSProperties;
   }
+
+  interface Palette {
+    tableFree: Palette['primary'];
+    tableOcc: Palette['primary'];
+    tableRes: Palette['primary'];
+  }
+
+  interface PaletteOptions {
+    tableFree?: PaletteOptions['primary'];
+    tableOcc?: PaletteOptions['primary'];
+    tableRes?: PaletteOptions['primary'];
+  }
 }
 
 declare module '@mui/material/Typography' {
@@ -50,7 +62,7 @@ export const theme = createTheme({
     },
     primary: {
       main: '#393939',
-      light: '#FAFAFA',
+      light: '#F9F9F9',
       dark: '#222222',
     },
     grey: {
@@ -64,6 +76,22 @@ export const theme = createTheme({
     },
     info: {
       main: '#9BC1FF',
+    },
+
+    tableFree: {
+      main: '#C5E1A5',
+      light: '#FFFFFF',
+      contrastText: '#000000',
+    },
+    tableOcc: {
+      main: '#FFE68E',
+      light: '#FFF9E2',
+      contrastText: '#000000',
+    },
+    tableRes: {
+      main: '#FF5858', // Red Badge
+      light: '#FFE8E8', // Red-tinted Card
+      contrastText: '#FFE8E8',
     },
   },
 });

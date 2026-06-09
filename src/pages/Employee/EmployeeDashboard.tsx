@@ -1,13 +1,13 @@
 import { Stack } from '@mui/material';
 import { Outlet } from '@tanstack/react-router';
-import { AdminSidebar } from '../../widgets/AdminSidebar';
 import { Header } from '../../widgets/Header';
+import { EmpolyeeSidebar } from '../../widgets/EmployeeSidebar';
 
-export const AdminDashboard = () => {
+export const EmployeeDashboard = () => {
   return (
     <Stack direction={'row'} sx={{ flex: 1, overflow: 'hidden' }}>
-      <AdminSidebar />
-      <Stack sx={{ flexGrow: 1, padding: 3 }}>
+      <EmpolyeeSidebar />
+      <Stack spacing={1} sx={{ flex: '1 1 auto', padding: 3 }}>
         <Header></Header>
         <Outlet />
       </Stack>

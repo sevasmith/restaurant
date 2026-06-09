@@ -1,6 +1,6 @@
 import { alpha, Button, Container, Stack, SvgIcon } from '@mui/material';
 import { Link as RouterLink, useLocation } from '@tanstack/react-router';
-import RestaurantIcon from '../assets/icons/restaurant-crm.svg?react';
+import RestaurantIcon from '../assets/icons/restaurant-black.svg?react';
 import HomeIcon from '../assets/icons/home.svg?react';
 import ShiftIcon from '../assets/icons/shift.svg?react';
 import PayrollIcon from '../assets/icons/payroll.svg?react';
@@ -27,7 +27,7 @@ export const AdminSidebar = () => {
   return (
     <Stack
       component={'aside'}
-      sx={{ width: 'fit-content', height: '100%', padding: 3, backgroundColor: 'primary.light' }}
+      sx={{ minWidth: 260, height: '100%', padding: 3, backgroundColor: 'primary.light' }}
     >
       <Container
         sx={{
@@ -49,6 +49,7 @@ export const AdminSidebar = () => {
 
           return (
             <Button
+              key={item.id}
               size="large"
               component={RouterLink}
               to={item.link}
