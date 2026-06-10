@@ -53,6 +53,7 @@ export const AdminSidebar = () => {
               size="large"
               component={RouterLink}
               to={item.link}
+              search={true}
               startIcon={<item.icon />}
               sx={{
                 padding: 2,

@@ -15,6 +15,7 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
       <Box
         component={RouterLink}
         to={card.link}
+        search={true}
         sx={{
           position: 'relative',
           display: 'flex',

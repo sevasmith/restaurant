@@ -8,6 +8,7 @@ export const Table1 = () => {
       <Stack direction={'row'} spacing={2}>
         <Box
           to="/employee/tables"
+          search={true}
           component={RouterLink}
           sx={{ display: 'flex', alignItems: 'center' }}
         >

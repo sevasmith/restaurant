@@ -25,7 +25,7 @@ export const Tables = () => {
       </Typography>
       <Stack direction={'row'} spacing={1} sx={{ width: '100%' }}>
         {TABLES_DATA.map((item) => (
-          <Card label={item.label} number={item.number} buttonText="Show" />
+          <Card key={item.id} label={item.label} number={item.number} buttonText="Show" />
         ))}
       </Stack>
       <TablesWidget />

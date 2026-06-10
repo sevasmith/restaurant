@@ -1,0 +1,43 @@
+import { IconButton, SvgIcon } from '@mui/material';
+import CommentWhiteIcon from '../../assets/icons/comment-white.svg?react';
+import { getRouteApi, useNavigate } from '@tanstack/react-router';
+
+export const ChatButton = () => {
+  const routeApi = getRouteApi('/_authenticated');
+  const { chat } = routeApi.useSearch();
+
+  const navigate = useNavigate();
+
+  if (chat && chat === 'open') return null;
+
+  return (
+    <IconButton
+      onClick={() => navigate({ search: { chat: 'open' } })}
+      size="small"
+      sx={{
+        position: 'absolute',
+        right: 15,
+        bottom: 50,
+        zIndex: 1000,
+        width: 56,
+        height: 56,
+        borderRadius: '50%',
+        color: 'primary.contrastText',
+        backgroundColor: 'primary.light',
+        border: 1,
+        borderColor: 'grey.200',
+        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
+        transition: 'all 0.2s ease-in-out',
+        '&:hover': {
+          transform: 'scale(1.05)',
+          boxShadow: '0px 6px 14px rgba(0, 0, 0, 0.2)',
+        },
+        '&:active': {
+          transform: 'scale(0.95)',
+        },
+      }}
+    >
+      <SvgIcon component={CommentWhiteIcon} inheritViewBox />
+    </IconButton>
+  );
+};
