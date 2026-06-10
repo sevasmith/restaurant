@@ -22,6 +22,7 @@ export const Header = () => {
 
   const handleLogOut = () => {
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('chatMessages');
     setCurrentUser(null);
     navigate({ to: '/login' });
   };
