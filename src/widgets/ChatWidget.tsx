@@ -1,5 +1,4 @@
 import { Box, Button, IconButton, Paper, Stack, TextField } from '@mui/material';
-import { getRouteApi, useNavigate } from '@tanstack/react-router';
 import { useWebSocketChat } from '../entities/message/model/useWebSocketChat';
 import { useEffect, useRef, useState, type SubmitEvent } from 'react';
 import DeleteIcon from '../assets/icons/delete.svg?react';
@@ -7,11 +6,13 @@ import SendIcon from '@mui/icons-material/Send';
 
 const WS_URL = 'wss://ws.ifelse.io';
 
-export const ChatWidget = () => {
-  const routeApi = getRouteApi('/_authenticated');
-  const { chat } = routeApi.useSearch();
-  const navigate = useNavigate();
-
+export const ChatWidget = ({
+  isChatOpen,
+  toggleChatOpen,
+}: {
+  isChatOpen: boolean;
+  toggleChatOpen: () => void;
+}) => {
   const { messages, status, sendMessage, clearChat } = useWebSocketChat(WS_URL);
   const [inputValue, setInputValue] = useState<string>('');
   const isConnected = status === 'Connected';
@@ -22,7 +23,7 @@ export const ChatWidget = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSend = (e: SubmitEvent<HTMLDivElement>) => {
+  const handleSend = (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputValue.trim()) {
       sendMessage(inputValue);
@@ -30,7 +31,7 @@ export const ChatWidget = () => {
     }
   };
 
-  if (!chat || chat !== 'open') return null;
+  if (!isChatOpen) return null;
 
   return (
     <Paper
@@ -73,7 +74,7 @@ export const ChatWidget = () => {
         </Button>
         <IconButton
           size="small"
-          onClick={() => navigate({ search: { chat: undefined } })}
+          onClick={toggleChatOpen}
           sx={{ padding: 0, display: 'flex', '&:hover': { opacity: 0.8 } }}
         >
           <DeleteIcon />

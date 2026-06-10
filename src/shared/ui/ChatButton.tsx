@@ -1,18 +1,18 @@
 import { IconButton, SvgIcon } from '@mui/material';
 import CommentWhiteIcon from '../../assets/icons/comment-white.svg?react';
-import { getRouteApi, useNavigate } from '@tanstack/react-router';
 
-export const ChatButton = () => {
-  const routeApi = getRouteApi('/_authenticated');
-  const { chat } = routeApi.useSearch();
-
-  const navigate = useNavigate();
-
-  if (chat && chat === 'open') return null;
+export const ChatButton = ({
+  isChatOpen,
+  toggleChatOpen,
+}: {
+  isChatOpen: boolean;
+  toggleChatOpen: () => void;
+}) => {
+  if (isChatOpen) return null;
 
   return (
     <IconButton
-      onClick={() => navigate({ search: { chat: 'open' } })}
+      onClick={toggleChatOpen}
       size="small"
       sx={{
         position: 'absolute',
@@ -29,6 +29,7 @@ export const ChatButton = () => {
         boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
         transition: 'all 0.2s ease-in-out',
         '&:hover': {
+          backgroundColor: 'primary.light',
           transform: 'scale(1.05)',
           boxShadow: '0px 6px 14px rgba(0, 0, 0, 0.2)',
         },
