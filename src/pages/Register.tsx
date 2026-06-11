@@ -149,11 +149,27 @@ export const Register = () => {
           Submit
         </Button>
       </Stack>
-      <Stack direction={'row'} spacing={1} sx={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Typography>Already have an account?</Typography>
-        <Link to="/login" component={RouterLink}>
-          Log in
-        </Link>
+      <Stack spacing={2}>
+        <Stack
+          direction={'row'}
+          spacing={1}
+          sx={{ alignItems: 'center', justifyContent: 'center' }}
+        >
+          <Typography>Already have an account?</Typography>
+          <Link to="/login" component={RouterLink}>
+            Log in
+          </Link>
+        </Stack>
+        <Stack
+          direction={'row'}
+          spacing={1}
+          sx={{ alignItems: 'center', justifyContent: 'center' }}
+        >
+          <Typography sx={{ color: 'grey.200' }}>Back to</Typography>
+          <Link to="/start" component={RouterLink} sx={{ color: 'grey.200' }}>
+            Start page
+          </Link>
+        </Stack>
       </Stack>
     </Stack>
   );
