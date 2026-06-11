@@ -89,8 +89,8 @@ export const theme = createTheme({
       contrastText: '#000000',
     },
     tableRes: {
-      main: '#FF5858', // Red Badge
-      light: '#FFE8E8', // Red-tinted Card
+      main: '#FF5858',
+      light: '#FFE8E8',
       contrastText: '#FFE8E8',
     },
   },
