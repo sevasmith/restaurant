@@ -1,8 +1,9 @@
 import { Box, Button, IconButton, Paper, Stack, TextField } from '@mui/material';
-import { useWebSocketChat } from '../features/chat/model/useWebSocketChat';
 import { useEffect, useRef, useState, type SubmitEvent } from 'react';
-import DeleteIcon from '../assets/icons/delete.svg?react';
+import DeleteIcon from '../../../assets/icons/delete.svg?react';
 import SendIcon from '@mui/icons-material/Send';
+import { useWebSocketChat } from '../../../features/chat/model/useWebSocketChat';
+import type { Message } from '../../../entities/message/model/types';
 
 const WS_URL = 'wss://ws.ifelse.io';
 
@@ -100,7 +101,7 @@ export const ChatWidget = ({
           },
         }}
       >
-        {messages.map((msg) => {
+        {messages.map((msg: Message) => {
           if (msg.sender === 'server' && msg.text.startsWith('Request served by')) return null;
 
           const isUser = msg.sender === 'user';

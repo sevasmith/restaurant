@@ -1,9 +1,9 @@
 import { alpha, Button, Container, Stack, SvgIcon } from '@mui/material';
 import { Link as RouterLink, useLocation } from '@tanstack/react-router';
-import RestaurantIcon from '../assets/icons/restaurant-white.svg?react';
-import TablesIcon from '../assets/icons/tables.svg?react';
-import OrdersIcon from '../assets/icons/orders.svg?react';
-import StatisticsIcon from '../assets/icons/statistics.svg?react';
+import RestaurantIcon from '../../../assets/icons/restaurant-white.svg?react';
+import TablesIcon from '../../../assets/icons/tables.svg?react';
+import OrdersIcon from '../../../assets/icons/orders.svg?react';
+import StatisticsIcon from '../../../assets/icons/statistics.svg?react';
 
 const SIDEBAR_ITEMS = [
   { id: 1, label: 'Tables', icon: TablesIcon, link: '/employee/tables' },

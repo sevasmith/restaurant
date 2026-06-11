@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Link, Stack, TextField, Typography } from '@mui/material';
 import { Link as RouterLink, useLocation, useNavigate } from '@tanstack/react-router';
-import { getFieldError } from '../shared/lib/getFieldError';
-import { getRegisteredUsers } from '../shared/lib/getRegisteredUsers';
-import { useUserContext } from '../entities/user/model/context';
-import type { User } from '../entities/user/model/types';
+import { useUserContext } from '../../../entities/user/model/context';
+import { getFieldError } from '../../../shared/lib/getFieldError';
+import { getRegisteredUsers } from '../../../shared/lib/getRegisteredUsers';
+import type { User } from '../../../entities/user/model/types';
 
 export const Register = () => {
   const { setCurrentUser } = useUserContext();

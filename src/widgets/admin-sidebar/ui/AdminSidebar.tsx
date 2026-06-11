@@ -1,14 +1,14 @@
 import { alpha, Button, Container, Stack, SvgIcon } from '@mui/material';
 import { Link as RouterLink, useLocation } from '@tanstack/react-router';
-import RestaurantIcon from '../assets/icons/restaurant-black.svg?react';
-import HomeIcon from '../assets/icons/home.svg?react';
-import ShiftIcon from '../assets/icons/shift.svg?react';
-import PayrollIcon from '../assets/icons/payroll.svg?react';
-import TasksIcon from '../assets/icons/tasks.svg?react';
-import AnalyticsIcon from '../assets/icons/analytics.svg?react';
-import EmployeesIcon from '../assets/icons/employees.svg?react';
-import VacationIcon from '../assets/icons/vacation.svg?react';
-import SickDaysIcon from '../assets/icons/sick-days.svg?react';
+import RestaurantIcon from '../../../assets/icons/restaurant-black.svg?react';
+import HomeIcon from '../../../assets/icons/home.svg?react';
+import ShiftIcon from '../../../assets/icons/shift.svg?react';
+import PayrollIcon from '../../../assets/icons/payroll.svg?react';
+import TasksIcon from '../../../assets/icons/tasks.svg?react';
+import AnalyticsIcon from '../../../assets/icons/analytics.svg?react';
+import EmployeesIcon from '../../../assets/icons/employees.svg?react';
+import VacationIcon from '../../../assets/icons/vacation.svg?react';
+import SickDaysIcon from '../../../assets/icons/sick-days.svg?react';
 
 const SIDEBAR_ITEMS = [
   { id: 1, label: 'Home', icon: HomeIcon, link: '/admin/home' },
