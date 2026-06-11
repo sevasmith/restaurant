@@ -27,7 +27,7 @@ export const ChatButton = ({
         border: 1,
         borderColor: 'grey.200',
         boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.15)',
-        opacity: 0.5,
+        opacity: 0.6,
         transition: 'all 0.2s ease-in-out',
         '&:hover': {
           opacity: 1,

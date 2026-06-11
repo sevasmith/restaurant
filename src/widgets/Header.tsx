@@ -1,12 +1,25 @@
-import { Box, Button, ClickAwayListener, Stack, SvgIcon, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  ClickAwayListener,
+  IconButton,
+  Stack,
+  SvgIcon,
+  Typography,
+} from '@mui/material';
 import BellIcon from '../assets/icons/bell.svg?react';
 import UserIcon from '../assets/icons/user.svg?react';
 import LogoutIcon from '@mui/icons-material/Logout';
+import BurgerIcon from '../assets/icons/burger.svg?react';
 import { useUserContext } from '../entities/user/model/context';
 import { useNavigate } from '@tanstack/react-router';
 import { useState } from 'react';
 
-export const Header = () => {
+interface HeaderProps {
+  onMenuClick?: () => void;
+}
+
+export const Header = ({ onMenuClick }: HeaderProps) => {
   const { currentUser, setCurrentUser } = useUserContext();
   const navigate = useNavigate();
 
@@ -28,7 +41,25 @@ export const Header = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
+    <Stack
+      direction={'row'}
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: { xs: 'space-between', md: 'end' },
+      }}
+    >
+      <IconButton
+        color="inherit"
+        aria-label="open sidebar menu"
+        edge="start"
+        onClick={onMenuClick}
+        sx={{ display: { md: 'none' }, mr: 1 }}
+      >
+        <SvgIcon>
+          <BurgerIcon />
+        </SvgIcon>
+      </IconButton>
       <Stack direction={'row'} spacing={1} sx={{ padding: 1 }}>
         <SvgIcon component={BellIcon} inheritViewBox sx={{ fill: 'none', cursor: 'pointer' }} />
         <ClickAwayListener onClickAway={closeDropdown}>
@@ -77,6 +108,6 @@ export const Header = () => {
           </Box>
         </ClickAwayListener>
       </Stack>
-    </Box>
+    </Stack>
   );
 };

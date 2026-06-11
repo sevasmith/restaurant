@@ -21,13 +21,17 @@ const SIDEBAR_ITEMS = [
   { id: 8, label: 'Sick days', icon: SickDaysIcon, link: '/admin/sickdays' },
 ];
 
-export const AdminSidebar = () => {
+interface AdminSidebarProps {
+  onClose?: () => void;
+}
+
+export const AdminSidebar = ({ onClose }: AdminSidebarProps) => {
   const location = useLocation();
 
   return (
     <Stack
       component={'aside'}
-      sx={{ minWidth: 260, height: '100%', padding: 3, backgroundColor: 'primary.light' }}
+      sx={{ width: 260, height: '100%', padding: 3, backgroundColor: 'primary.light' }}
     >
       <Container
         sx={{
@@ -55,6 +59,7 @@ export const AdminSidebar = () => {
               to={item.link}
               search={true}
               startIcon={<item.icon />}
+              onClick={onClose}
               sx={{
                 padding: 2,
                 paddingLeft: 2.5,

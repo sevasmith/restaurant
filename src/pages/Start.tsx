@@ -7,8 +7,13 @@ export const Start = () => {
   return (
     <Stack
       component="main"
-      spacing={10}
-      sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}
+      spacing={{ xs: 6, md: 10 }}
+      sx={{
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: { xs: 3, sm: 0 },
+      }}
     >
       <Stack spacing={4} sx={{ alignItems: 'center' }}>
         <Typography component={'h1'} variant="h3">
@@ -18,7 +23,11 @@ export const Start = () => {
           Which describes you best?
         </Typography>
       </Stack>
-      <Stack direction={'row'} spacing={5} sx={{ margin: '0 auto', width: '40%' }}>
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={{ xs: 3, sm: 5 }}
+        sx={{ margin: '0 auto', width: { xs: '100%', sm: '80%', md: '50%' }, maxWidth: '650px' }}
+      >
         <Stack
           direction={'column'}
           spacing={3}
