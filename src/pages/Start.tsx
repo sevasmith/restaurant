@@ -64,7 +64,7 @@ export const Start = () => {
           direction={'column'}
           spacing={3}
           to="/register"
-          state={{ role: 'employee' }}
+          state={{ role: 'admin' }}
           component={RouterLink}
           sx={{
             flex: 1,
