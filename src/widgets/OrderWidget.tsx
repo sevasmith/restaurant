@@ -48,7 +48,7 @@ export const OrderWidget = () => {
   }, 0);
 
   return (
-    <Stack sx={{ backgroundColor: 'primary.light', padding: 2, borderRadius: 2 }}>
+    <Stack sx={{ backgroundColor: 'primary.light', padding: { xs: 1.5, sm: 2 }, borderRadius: 2 }}>
       <OrderTable table={table} />
       <OrderTotal total={total} />
     </Stack>

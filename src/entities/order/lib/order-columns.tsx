@@ -30,7 +30,7 @@ export const orderColumns = [
         checked={table.getIsAllRowsSelected()}
         indeterminate={table.getIsSomeRowsSelected()}
         onChange={table.getToggleAllRowsSelectedHandler()}
-        sx={{ color: 'grey.200', marginRight: 2 }}
+        sx={{ color: 'grey.200', marginRight: { xs: 0.5, sm: 2 } }}
       />
     ),
     cell: ({ row }) => (
@@ -39,7 +39,7 @@ export const orderColumns = [
         checked={row.getIsSelected()}
         disabled={!row.getCanSelect()}
         onChange={row.getToggleSelectedHandler()}
-        sx={{ color: 'grey.200', marginRight: 2 }}
+        sx={{ color: 'grey.200', marginRight: { xs: 0.5, sm: 2 } }}
       />
     ),
   }),
@@ -50,8 +50,15 @@ export const orderColumns = [
 
       return (
         <Stack direction="row" spacing={2} sx={{ alignItems: 'center' }}>
-          <Avatar src={imageUrl} alt={name} sx={{ width: 40, height: 40 }}></Avatar>
-          <Typography variant="body2" sx={{ fontSize: 18, color: 'primary.dark' }}>
+          <Avatar
+            src={imageUrl}
+            alt={name}
+            sx={{ width: { xs: 32, sm: 40 }, height: { xs: 32, sm: 40 } }}
+          ></Avatar>
+          <Typography
+            variant="body2"
+            sx={{ fontSize: { xs: '14px', sm: '16px', md: '18px' }, color: 'primary.dark' }}
+          >
             {name}
           </Typography>
         </Stack>
@@ -112,7 +119,7 @@ export const orderColumns = [
               },
             }}
           >
-            <Typography sx={{ fontWeight: 800 }}>{amount}</Typography>
+            <Typography sx={{ fontWeight: 800, fontSize: { xs: 13, sm: 14 } }}>{amount}</Typography>
           </Box>
           <IconButton
             size="small"
