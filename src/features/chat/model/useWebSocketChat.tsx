@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { type Message, type ConnectionStatus } from './types';
+import { type Message, type ConnectionStatus } from '../../../entities/message/model/types';
 
 export const useWebSocketChat = (url: string) => {
   const [messages, setMessages] = useState<Message[]>(() => {

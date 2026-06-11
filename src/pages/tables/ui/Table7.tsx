@@ -1,7 +1,7 @@
 import { Box, Stack, SvgIcon, Typography } from '@mui/material';
 import BackIcon from '../../../assets/icons/back.svg?react';
 import { Link as RouterLink } from '@tanstack/react-router';
-import { OrderWidget } from '../../../widgets/OrderWidget';
+import { OrderWidget } from '../../../widgets/order-widget/ui/OrderWidget';
 
 export const Table7 = () => {
   return (
