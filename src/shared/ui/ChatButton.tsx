@@ -16,8 +16,8 @@ export const ChatButton = ({
       size="small"
       sx={{
         position: 'absolute',
-        right: 15,
-        bottom: 60,
+        right: { xs: 16, sm: 25 },
+        bottom: { xs: 16, sm: 25 },
         zIndex: 1000,
         width: 50,
         height: 50,

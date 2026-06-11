@@ -22,12 +22,16 @@ export const Employees = () => {
         },
       }}
     >
-      <Typography variant="h5" component={'h2'} sx={{ fontWeight: 500, padding: 1 }}>
+      <Typography
+        variant="h5"
+        component={'h2'}
+        sx={{ fontWeight: 500, px: { xs: 0, sm: 1 }, pt: 1 }}
+      >
         Employees
       </Typography>
-      <Stack direction={'row'} spacing={1} sx={{ width: '100%' }}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} sx={{ width: '100%' }}>
         {EMPLOYEES_DATA.map((item) => (
-          <Card label={item.label} number={item.number} buttonText="View" />
+          <Card key={item.id} label={item.label} number={item.number} buttonText="View" />
         ))}
       </Stack>
       <EmployeesWidget></EmployeesWidget>
