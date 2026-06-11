@@ -9,7 +9,7 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
       sx={{
         display: 'flex',
         aspectRatio: '1/1',
-        padding: card.padding,
+        padding: { xs: '6px', sm: '8px', md: '10px', lg: card.padding },
       }}
     >
       <Box
@@ -35,7 +35,7 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
             borderRadius: '8px',
             justifyContent: 'space-between',
             backgroundClip: 'padding-box',
-            overFlow: 'hidden',
+            ooverflow: 'hidden',
             transition: 'all 0.1s ease',
             '&:hover': { boxShadow: (theme) => `inset 0 0 0 1px ${theme.palette.grey[200]}` },
           }}
@@ -44,7 +44,9 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
             direction={'row'}
             sx={{ padding: 1, alignItems: 'center', justifyContent: 'space-between' }}
           >
-            <Typography sx={{ fontSize: 14, fontWeight: 600 }}>{card.id}</Typography>
+            <Typography sx={{ fontSize: { xs: 18, md: 14 }, fontWeight: 600 }}>
+              {card.id}
+            </Typography>
             <Box
               sx={{
                 position: 'absolute',
@@ -57,14 +59,24 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
               }}
             >
               <Typography
-                sx={{ fontSize: 12, fontWeight: 600, color: `table${card.status}.contrastText` }}
+                sx={{
+                  fontSize: { xs: 16, md: 12 },
+                  fontWeight: 600,
+                  color: `table${card.status}.contrastText`,
+                }}
               >
                 {card.status}
               </Typography>
             </Box>
           </Stack>
-          <Stack direction={'column'} sx={{ alignItems: 'center', alignSelf: 'center' }}>
-            <Typography sx={{ fontSize: 14, fontWeight: 600 }}>{card.time}</Typography>
+          <Stack
+            spacing={{ xs: 0, md: 1, lg: 0 }}
+            direction={{ xs: 'column', md: 'row', lg: 'column' }}
+            sx={{ alignItems: 'center', alignSelf: 'center' }}
+          >
+            <Typography sx={{ fontSize: { xs: 18, md: 14 }, fontWeight: 600 }}>
+              {card.time}
+            </Typography>
             <SvgIcon component={ArrowIcon} inheritViewBox sx={{ width: '14px' }} />
           </Stack>
         </Stack>

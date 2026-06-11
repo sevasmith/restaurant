@@ -75,10 +75,19 @@ export const Register = () => {
   return (
     <Stack
       component="main"
-      spacing={8}
-      sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}
+      spacing={{ xs: 4, sm: 6 }}
+      sx={{
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: { xs: 3, sm: 0 },
+      }}
     >
-      <Typography variant="h4" component={'h1'}>
+      <Typography
+        variant="h4"
+        component={'h1'}
+        sx={{ fontSize: { xs: '1.75rem', sm: '2.125rem' } }}
+      >
         Create your account
       </Typography>
       <Stack
@@ -86,9 +95,19 @@ export const Register = () => {
         onSubmit={handleSubmit}
         noValidate
         spacing={3}
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          maxWidth: '400px',
+        }}
       >
-        <Stack direction={'row'} spacing={2}>
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          spacing={{ xs: 3, sm: 2 }}
+          sx={{ width: '100%' }}
+        >
           <TextField
             size="small"
             required
@@ -140,10 +159,11 @@ export const Register = () => {
           type="submit"
           variant="contained"
           sx={{
-            width: '50%',
+            width: { xs: '100%', sm: '50%' },
             fontSize: 16,
             fontWeight: 400,
             textTransform: 'none',
+            padding: { xs: 1.2, sm: 1 },
           }}
         >
           Submit

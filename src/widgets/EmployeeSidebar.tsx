@@ -11,14 +11,18 @@ const SIDEBAR_ITEMS = [
   { id: 3, label: 'Statistics', icon: StatisticsIcon, link: '/employee/statistics' },
 ];
 
-export const EmpolyeeSidebar = () => {
+interface EmployeeSidebarProps {
+  onClose?: () => void;
+}
+
+export const EmpolyeeSidebar = ({ onClose }: EmployeeSidebarProps) => {
   const location = useLocation();
 
   return (
     <Stack
       component={'aside'}
       sx={{
-        minWidth: 260,
+        width: 260,
         height: '100%',
         padding: 3,
         backgroundColor: 'primary.dark',
@@ -56,6 +60,7 @@ export const EmpolyeeSidebar = () => {
               to={item.link}
               search={true}
               startIcon={<item.icon />}
+              onClick={onClose}
               sx={{
                 padding: 2,
                 paddingLeft: 2.5,

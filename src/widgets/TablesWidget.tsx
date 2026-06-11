@@ -24,11 +24,24 @@ const TABLES_DATA = [
 export const TablesWidget = () => {
   return (
     <Container
-      sx={{ flex: '1 1 auto', backgroundColor: 'primary.light', padding: 2, borderRadius: '8px' }}
+      maxWidth={false}
+      sx={{
+        display: 'flex',
+        flex: '1 1 auto',
+        backgroundColor: 'primary.light',
+        padding: 2,
+        borderRadius: '8px',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
     >
-      <Grid container columns={12}>
+      <Grid container columns={12} spacing={{ xs: 1.5, md: 0 }}>
         {TABLES_DATA.map((item) => (
-          <Grid key={item.id} size={2} offset={item.id === '6' ? 1 : 0}>
+          <Grid
+            key={item.id}
+            size={{ xs: 6, sm: 4, md: 2 }}
+            offset={{ xs: 0, md: item.id === '6' ? 1 : 0 }}
+          >
             <TableCard card={item} />
           </Grid>
         ))}

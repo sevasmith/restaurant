@@ -16,8 +16,14 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 export const OrderTable = ({ table }: { table: TanStackTable<Order> }) => {
   return (
-    <TableContainer>
-      <Table sx={{ borderCollapse: 'separate', borderSpacing: '0 8px' }}>
+    <TableContainer sx={{ width: '100%', overflowX: 'auto' }}>
+      <Table
+        sx={{
+          borderCollapse: 'separate',
+          borderSpacing: '0 8px',
+          minWidth: { xs: 500, md: '100%' },
+        }}
+      >
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -33,6 +39,7 @@ export const OrderTable = ({ table }: { table: TanStackTable<Order> }) => {
                     opacity: header.id === 'select' ? 1 : 0.4,
                     borderBottom: 'none',
                     width: header.id === 'select' ? '1%' : 'auto',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {flexRender(header.column.columnDef.header, header.getContext())}
@@ -48,7 +55,7 @@ export const OrderTable = ({ table }: { table: TanStackTable<Order> }) => {
                 <TableRow key={row.id}>
                   <TableCell
                     colSpan={row.getVisibleCells().length}
-                    sx={{ borderBottom: 'none', padding: '16px 0 2px 0' }}
+                    sx={{ borderBottom: 'none', padding: '16px 8px 2px 0' }}
                   >
                     <Stack
                       direction="row"
@@ -97,10 +104,15 @@ export const OrderTable = ({ table }: { table: TanStackTable<Order> }) => {
                   <TableCell
                     key={cell.id}
                     sx={{
-                      padding: '8px 0',
+                      padding: '8px',
+                      paddingLeft: 0,
+                      paddingRight: { xs: '16px', md: '8px' },
                       borderBottom: 'none',
-                      fontSize: '18px',
+                      fontSize: { xs: '14px', sm: '16px', md: '18px' },
                       fontWeight: '400',
+                      whiteSpace: 'nowrap',
+                      width: cell.column.id === 'deleteButton' ? '48px' : 'auto',
+                      minWidth: cell.column.id === 'deleteButton' ? '48px' : 'auto',
                     }}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

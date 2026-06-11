@@ -5,7 +5,7 @@ import {
   useReactTable,
   type ColumnFiltersState,
 } from '@tanstack/react-table';
-import { Box, CircularProgress, Stack, Typography } from '@mui/material';
+import { CircularProgress, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 import { EmployeeSearch } from '../features/employee-search/ui/EmployeeSearch';
 import { EmployeeFilter } from '../features/employee-filter/ui/EmployeeFilter';
@@ -66,10 +66,10 @@ export const EmployeesWidget = () => {
 
   return (
     <Stack sx={{ backgroundColor: 'primary.light', padding: 2, borderRadius: 2 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Stack spacing={1} direction={'row'} sx={{ justifyContent: 'space-between' }}>
         <EmployeeFilter table={table} />
         <EmployeeSearch globalFilter={globalFilter} setGlobalFilter={setGlobalFilter} />
-      </Box>
+      </Stack>
 
       <EmployeeTable table={table} />
     </Stack>

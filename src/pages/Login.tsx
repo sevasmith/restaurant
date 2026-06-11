@@ -59,10 +59,19 @@ export const Login = () => {
   return (
     <Stack
       component="main"
-      spacing={8}
-      sx={{ flexGrow: 1, alignItems: 'center', justifyContent: 'center' }}
+      spacing={{ xs: 4, sm: 6 }}
+      sx={{
+        flexGrow: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: { xs: 3, sm: 0 },
+      }}
     >
-      <Typography variant="h4" component={'h1'}>
+      <Typography
+        variant="h4"
+        component={'h1'}
+        sx={{ fontSize: { xs: '1.75rem', sm: '2.125rem' } }}
+      >
         Log into your account
       </Typography>
       <Stack
@@ -70,7 +79,13 @@ export const Login = () => {
         onSubmit={handleSubmit}
         noValidate
         spacing={3}
-        sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '25%' }}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          maxWidth: '400px',
+        }}
       >
         <TextField
           size="small"
@@ -100,10 +115,11 @@ export const Login = () => {
           type="submit"
           variant="contained"
           sx={{
-            width: '50%',
+            width: { xs: '100%', sm: '50%' },
             fontSize: 16,
             fontWeight: 400,
             textTransform: 'none',
+            padding: 1,
           }}
         >
           Submit

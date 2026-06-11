@@ -15,15 +15,21 @@ export const Tables = () => {
       sx={{
         flexGrow: 1,
         overflowY: 'auto',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
         '&::-webkit-scrollbar': {
           display: 'none',
         },
       }}
     >
-      <Typography variant="h5" component={'h2'} sx={{ fontWeight: 500, padding: 1 }}>
+      <Typography
+        variant="h5"
+        component={'h2'}
+        sx={{ fontWeight: 500, px: { xs: 0, sm: 1 }, pt: 1 }}
+      >
         Tables
       </Typography>
-      <Stack direction={'row'} spacing={1} sx={{ width: '100%' }}>
+      <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} sx={{ width: '100%' }}>
         {TABLES_DATA.map((item) => (
           <Card key={item.id} label={item.label} number={item.number} buttonText="Show" />
         ))}

@@ -38,21 +38,25 @@ export const ChatWidget = ({
       elevation={6}
       sx={{
         position: 'absolute',
-        right: 25,
-        bottom: 25,
-        width: 300,
-        height: 500,
+        top: { xs: 0, sm: 'auto' },
+        left: { xs: 0, sm: 'auto' },
+        right: { xs: 0, sm: 25 },
+        bottom: { xs: 0, sm: 25 },
+        width: { xs: '100%', sm: 300 },
+        height: { xs: '100%', sm: 500 },
+        zIndex: 1100,
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        borderRadius: 5,
+        borderRadius: { xs: 0, sm: 5 },
+        padding: { xs: 2, sm: 0 },
       }}
     >
       <Stack
         direction={'row'}
         sx={{
           padding: 2,
-          paddingBottom: 1.5,
+          paddingBottom: { xs: 3, sm: 1.5 },
           alignItems: 'center',
           justifyContent: 'space-between',
           borderBottom: 1,
@@ -62,12 +66,12 @@ export const ChatWidget = ({
         <Button
           onClick={clearChat}
           sx={{
-            fontSize: 14,
+            fontSize: { xs: 16, sm: 14 },
             fontWeight: 400,
             textTransform: 'none',
             border: '1px solid',
             borderRadius: 8,
-            lineHeight: '14px',
+            lineHeight: { xs: '16px', sm: '14px' },
           }}
         >
           Clear chat
@@ -107,7 +111,8 @@ export const ChatWidget = ({
               sx={{
                 alignSelf: isUser ? 'flex-end' : 'flex-start',
                 maxWidth: '75%',
-                fontSize: 14,
+                padding: { xs: 2, sm: 1 },
+                fontSize: { xs: 16, sm: 14 },
                 px: 1.5,
                 py: 1,
                 borderRadius: isUser ? '16px 16px 0px 16px' : '16px 16px 16px 0px',
@@ -135,6 +140,7 @@ export const ChatWidget = ({
           display: 'flex',
           gap: 1,
           bgcolor: 'background.paper',
+          alignItems: 'center',
         }}
       >
         <TextField

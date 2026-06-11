@@ -13,8 +13,14 @@ import type { Employee } from '../model/types';
 export const EmployeeTable = ({ table }: { table: TanStackTable<Employee> }) => {
   return (
     <>
-      <TableContainer>
-        <Table sx={{ borderCollapse: 'separate', borderSpacing: '0 8px' }}>
+      <TableContainer sx={{ width: '100%', overflowX: 'auto' }}>
+        <Table
+          sx={{
+            borderCollapse: 'separate',
+            borderSpacing: '0 8px',
+            minWidth: { xs: 650, md: '100%' },
+          }}
+        >
           <TableHead>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -25,11 +31,12 @@ export const EmployeeTable = ({ table }: { table: TanStackTable<Employee> }) => 
                       padding: 0,
                       paddingRight: header.id === 'select' ? 0 : 1,
                       fontWeight: 700,
-                      fontSize: 14,
+                      fontSize: { xs: 12, sm: 14 },
                       color: 'primary.dark',
                       opacity: header.id === 'select' ? 1 : 0.4,
                       borderBottom: 'none',
                       width: header.id === 'select' ? '1%' : 'auto',
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     {flexRender(header.column.columnDef.header, header.getContext())}
@@ -51,10 +58,11 @@ export const EmployeeTable = ({ table }: { table: TanStackTable<Employee> }) => 
                   <TableCell
                     key={cell.id}
                     sx={{
-                      padding: '8px 0',
+                      padding: '8px 12px 8px 0',
                       borderBottom: 'none',
-                      fontSize: '18px',
+                      fontSize: { xs: '14px', sm: '16px', md: '18px' },
                       fontWeight: '300',
+                      whiteSpace: 'nowrap',
                     }}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -75,6 +83,12 @@ export const EmployeeTable = ({ table }: { table: TanStackTable<Employee> }) => 
         onRowsPerPageChange={(e) => {
           table.setPageSize(Number(e.target.value));
           table.setPageIndex(0);
+        }}
+        sx={{
+          '& .MuiTablePagination-toolbar': {
+            paddingLeft: { xs: 1, sm: 2 },
+            paddingRight: { xs: 1, sm: 2 },
+          },
         }}
       />
     </>

@@ -11,8 +11,14 @@ export const Card = ({
 }) => {
   return (
     <Stack
-      spacing={2}
-      sx={{ backgroundColor: 'primary.light', padding: 3, borderRadius: 2, flex: '1 0 auto' }}
+      spacing={{ xs: 1, md: 2 }}
+      sx={{
+        backgroundColor: 'primary.light',
+        padding: { xs: 2, md: 3 },
+        borderRadius: 2,
+        flex: 1,
+        width: '100%',
+      }}
     >
       <Typography sx={{ fontWeight: 700, fontSize: 14, color: 'primary.dark', opacity: 0.4 }}>
         {label}
@@ -28,6 +34,7 @@ export const Card = ({
             textTransform: 'none',
             fontSize: '16px',
             fontWeight: 300,
+            whiteSpace: 'nowrap',
           }}
         >
           {buttonText}
