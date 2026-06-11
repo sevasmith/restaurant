@@ -1,5 +1,5 @@
 import { Container, Grid } from '@mui/material';
-import { TableCard } from '../shared/ui/TableCard';
+import { TableCard } from '../../../shared/ui/TableCard';
 
 const TABLES_DATA = [
   { id: '1', status: 'Occ', padding: '32px', link: '/employee/table/1', time: '' },

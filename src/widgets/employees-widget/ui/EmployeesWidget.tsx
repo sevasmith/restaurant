@@ -7,12 +7,12 @@ import {
 } from '@tanstack/react-table';
 import { CircularProgress, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
-import { EmployeeSearch } from '../features/employee-search/ui/EmployeeSearch';
-import { EmployeeFilter } from '../features/employee-filter/ui/EmployeeFilter';
-import { columns } from '../entities/employee/lib/employee-columns';
-import { EmployeeTable } from '../entities/employee/ui/EmployeeTable';
 import { useQuery } from '@tanstack/react-query';
-import { getEmployees } from '../entities/employee/api/get-employees';
+import { getEmployees } from '../../../entities/employee/api/get-employees';
+import { columns } from '../../../entities/employee/lib/employee-columns';
+import { EmployeeFilter } from '../../../features/employee-filter/ui/EmployeeFilter';
+import { EmployeeSearch } from '../../../features/employee-search/ui/EmployeeSearch';
+import { EmployeeTable } from '../../../entities/employee/ui/EmployeeTable';
 
 export interface GlobalFilterType {
   globalFilter: string;

@@ -1,7 +1,7 @@
 import { Stack, Link, Typography, SvgIcon } from '@mui/material';
 import { Link as RouterLink } from '@tanstack/react-router';
-import EmployeeIcon from '../assets/icons/employee.svg?react';
-import AdminIcon from '../assets/icons/admin.svg?react';
+import EmployeeIcon from '../../../assets/icons/employee.svg?react';
+import AdminIcon from '../../../assets/icons/admin.svg?react';
 
 export const Start = () => {
   return (
