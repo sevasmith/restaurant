@@ -67,7 +67,7 @@ export const orderColumns = [
   }),
   columnHelper.accessor('price', {
     header: 'Price',
-    cell: (props) => `$${props.getValue()}`,
+    cell: (props) => `$${props.getValue().toFixed(2)}`,
   }),
 
   columnHelper.accessor('amount', {
@@ -152,7 +152,7 @@ export const orderColumns = [
     cell: (props) => {
       if (props.row.original.amount === 1) return;
 
-      const itemTotal = props.row.original.price * props.row.original.amount;
+      const itemTotal = (props.row.original.price * props.row.original.amount).toFixed(2);
       return `$${itemTotal}`;
     },
   }),

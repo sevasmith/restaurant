@@ -7,10 +7,10 @@ import {
   SvgIcon,
   Typography,
 } from '@mui/material';
-import BellIcon from '../assets/icons/bell.svg?react';
-import UserIcon from '../assets/icons/user.svg?react';
+import BellIcon from '../../../assets/icons/bell.svg?react';
+import UserIcon from '../../../assets/icons/user.svg?react';
 import LogoutIcon from '@mui/icons-material/Logout';
-import BurgerIcon from '../assets/icons/burger.svg?react';
+import BurgerIcon from '../../../assets/icons/burger.svg?react';
 import { useNavigate } from '@tanstack/react-router';
 import { useState } from 'react';
 import { useUserContext } from '../../../entities/user/model/context';
