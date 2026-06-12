@@ -1,23 +1,15 @@
 import { alpha, Button, Container, Stack, SvgIcon } from '@mui/material';
-import { Link as RouterLink, useLocation } from '@tanstack/react-router';
+import { Link as RouterLink } from '@tanstack/react-router';
 import RestaurantIcon from '../../../assets/icons/restaurant-white.svg?react';
 import TablesIcon from '../../../assets/icons/tables.svg?react';
-import OrdersIcon from '../../../assets/icons/orders.svg?react';
-import StatisticsIcon from '../../../assets/icons/statistics.svg?react';
 
-const SIDEBAR_ITEMS = [
-  { id: 1, label: 'Tables', icon: TablesIcon, link: '/employee/tables' },
-  { id: 2, label: 'Orders', icon: OrdersIcon, link: '/employee/orders' },
-  { id: 3, label: 'Statistics', icon: StatisticsIcon, link: '/employee/statistics' },
-];
+const SIDEBAR_ITEMS = [{ id: 1, label: 'Tables', icon: TablesIcon, link: '/employee/tables' }];
 
 interface EmployeeSidebarProps {
   onClose?: () => void;
 }
 
 export const EmpolyeeSidebar = ({ onClose }: EmployeeSidebarProps) => {
-  const location = useLocation();
-
   return (
     <Stack
       component={'aside'}
@@ -50,8 +42,6 @@ export const EmpolyeeSidebar = ({ onClose }: EmployeeSidebarProps) => {
       </Container>
       <Stack spacing={1} sx={{ paddingTop: 3 }}>
         {SIDEBAR_ITEMS.map((item) => {
-          const isActive = location.pathname === item.link;
-
           return (
             <Button
               key={item.id}
@@ -64,8 +54,8 @@ export const EmpolyeeSidebar = ({ onClose }: EmployeeSidebarProps) => {
               sx={{
                 padding: 2,
                 paddingLeft: 2.5,
-                backgroundColor: isActive ? 'common.white' : 'primary.main',
-                color: isActive ? 'primary.main' : 'common.white',
+                backgroundColor: 'common.white',
+                color: 'primary.main',
                 textTransform: 'none',
                 justifyContent: 'start',
                 alignItems: 'center',

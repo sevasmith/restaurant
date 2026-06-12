@@ -8,9 +8,9 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { Header } from '../../Header';
 import { ChatButton } from '../../../shared/ui/ChatButton';
 import { ChatWidget } from '../../chat-widget/ui/ChatWidget';
+import { Header } from '../../header/ui/Header';
 
 export interface BaseDAshboardProps {
   sidebar: ReactNode;

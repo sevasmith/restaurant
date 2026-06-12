@@ -1,8 +1,11 @@
 import { Box, Stack, SvgIcon, Typography } from '@mui/material';
 import BackIcon from '../../../assets/icons/back.svg?react';
-import { Link as RouterLink } from '@tanstack/react-router';
+import { Link as RouterLink, useParams } from '@tanstack/react-router';
+import { OrderWidget } from '../../../widgets/order-widget/ui/OrderWidget';
 
-export const Table6 = () => {
+export const Table = () => {
+  const { tableId } = useParams({ strict: false });
+
   return (
     <Stack spacing={1}>
       <Stack direction={'row'} spacing={2}>
@@ -20,13 +23,14 @@ export const Table6 = () => {
         </Box>
         <Stack>
           <Typography sx={{ fontSize: 24, fontWeight: 500, color: 'primary.dark' }}>
-            Table 6
+            {`Table ${tableId}`}
           </Typography>
           <Typography sx={{ fontSize: 14, fontWeight: 600, color: 'primary.dark', opacity: 0.4 }}>
             Order details
           </Typography>
         </Stack>
       </Stack>
+      {tableId && <OrderWidget tableId={tableId} />}
     </Stack>
   );
 };

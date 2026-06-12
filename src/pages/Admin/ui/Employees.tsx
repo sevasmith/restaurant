@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material';
 import { Card } from '../../../shared/ui/Card';
-import { EmployeesWidget } from '../../../widgets/EmployeesWidget';
+import { EmployeesWidget } from '../../../widgets/employees-widget/ui/EmployeesWidget';
 
 const EMPLOYEES_DATA = [
   { id: 1, label: 'All employees', number: 55 },

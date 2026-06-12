@@ -1,6 +1,6 @@
 import { Stack, SvgIcon, TextField } from '@mui/material';
 import SearchIcon from '../../../assets/icons/search.svg?react';
-import type { GlobalFilterType } from '../../../widgets/EmployeesWidget';
+import type { GlobalFilterType } from '../../../widgets/employees-widget/ui/EmployeesWidget';
 
 export const EmployeeSearch = ({ globalFilter, setGlobalFilter }: GlobalFilterType) => {
   return (

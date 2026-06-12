@@ -12,23 +12,23 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
         padding: { xs: '6px', sm: '8px', md: '10px', lg: card.padding },
       }}
     >
-      <Box
-        component={RouterLink}
-        to={card.link}
-        search={true}
-        sx={{
-          position: 'relative',
+      <RouterLink
+        to="/employee/table/$tableId"
+        params={{ tableId: card.id }}
+        style={{
           display: 'flex',
           flexGrow: 1,
           textDecoration: 'none',
-          color: 'common.black',
+          width: '100%',
         }}
       >
         <Stack
           direction={'column'}
           sx={{
+            position: 'relative',
             flexGrow: 1,
             paddingBottom: 2.5,
+            color: 'common.black',
             backgroundColor: `table${card.status}.light`,
             border: '1px solid',
             borderColor: 'grey.200',
@@ -80,7 +80,7 @@ export const TableCard = ({ card }: { card: TableCardType }) => {
             <SvgIcon component={ArrowIcon} inheritViewBox sx={{ width: '14px' }} />
           </Stack>
         </Stack>
-      </Box>
+      </RouterLink>
     </Box>
   );
 };
