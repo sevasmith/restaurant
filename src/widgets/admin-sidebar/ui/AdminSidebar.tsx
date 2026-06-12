@@ -1,24 +1,10 @@
 import { alpha, Button, Container, Stack, SvgIcon } from '@mui/material';
-import { Link as RouterLink, useLocation } from '@tanstack/react-router';
+import { Link as RouterLink } from '@tanstack/react-router';
 import RestaurantIcon from '../../../assets/icons/restaurant-black.svg?react';
-import HomeIcon from '../../../assets/icons/home.svg?react';
-import ShiftIcon from '../../../assets/icons/shift.svg?react';
-import PayrollIcon from '../../../assets/icons/payroll.svg?react';
-import TasksIcon from '../../../assets/icons/tasks.svg?react';
-import AnalyticsIcon from '../../../assets/icons/analytics.svg?react';
 import EmployeesIcon from '../../../assets/icons/employees.svg?react';
-import VacationIcon from '../../../assets/icons/vacation.svg?react';
-import SickDaysIcon from '../../../assets/icons/sick-days.svg?react';
 
 const SIDEBAR_ITEMS = [
-  { id: 1, label: 'Home', icon: HomeIcon, link: '/admin/home' },
-  { id: 2, label: 'Shift', icon: ShiftIcon, link: '/admin/shift' },
-  { id: 3, label: 'Payroll', icon: PayrollIcon, link: '/admin/payroll' },
-  { id: 4, label: 'Tasks', icon: TasksIcon, link: '/admin/tasks' },
-  { id: 5, label: 'Analytics', icon: AnalyticsIcon, link: '/admin/analytics' },
-  { id: 6, label: 'Employees', icon: EmployeesIcon, link: '/admin/employees' },
-  { id: 7, label: 'Vacation', icon: VacationIcon, link: '/admin/vacation' },
-  { id: 8, label: 'Sick days', icon: SickDaysIcon, link: '/admin/sickdays' },
+  { id: 1, label: 'Employees', icon: EmployeesIcon, link: '/admin/employees' },
 ];
 
 interface AdminSidebarProps {
@@ -26,8 +12,6 @@ interface AdminSidebarProps {
 }
 
 export const AdminSidebar = ({ onClose }: AdminSidebarProps) => {
-  const location = useLocation();
-
   return (
     <Stack
       component={'aside'}
@@ -49,8 +33,6 @@ export const AdminSidebar = ({ onClose }: AdminSidebarProps) => {
       </Container>
       <Stack spacing={1} sx={{ paddingTop: 3 }}>
         {SIDEBAR_ITEMS.map((item) => {
-          const isActive = location.pathname === item.link;
-
           return (
             <Button
               key={item.id}
@@ -63,8 +45,8 @@ export const AdminSidebar = ({ onClose }: AdminSidebarProps) => {
               sx={{
                 padding: 2,
                 paddingLeft: 2.5,
-                backgroundColor: isActive ? 'primary.dark' : 'common.white',
-                color: isActive ? 'common.white' : 'common.black',
+                backgroundColor: 'primary.dark',
+                color: 'common.white',
                 textTransform: 'none',
                 justifyContent: 'start',
                 alignItems: 'center',

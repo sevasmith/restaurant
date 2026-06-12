@@ -4,15 +4,16 @@ import {
   getGroupedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { mockOrderData } from '../../../entities/order/api/mockOrderData';
+import { mockOrders } from '../../../entities/order/api/mockOrderData';
 import { orderColumns } from '../../../entities/order/lib/order-columns';
 import { Stack } from '@mui/material';
 import { OrderTable } from '../../../entities/order/ui/OrderTable';
 import { useState } from 'react';
 import { OrderTotal } from '../../../entities/order/ui/OrderTotal';
 
-export const OrderWidget = () => {
-  const [data, setData] = useState(mockOrderData);
+export const OrderWidget = ({ tableId }: { tableId: string }) => {
+  const currentTableOrder = mockOrders.find((order) => order.table === tableId);
+  const [data, setData] = useState(currentTableOrder ? currentTableOrder.order : []);
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
